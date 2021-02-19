@@ -45,6 +45,9 @@ $(document).ready(function(){
           if (sData.t !== 'undefined') {
             $("#info").html(sData.t);
           }
+          let now = new date();
+          $("#T_measure").append(now.toString());
+
         }
 
       };

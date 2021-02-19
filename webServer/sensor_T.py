@@ -47,8 +47,8 @@ class sensor_T:
             time.sleep(0.25)
         message = { "info": "T", "T": T_C }
         if getTime:
-            now = time.localtime()
-            now = time.strftime("%a %b %d %H:%S")
-            message["t"] = now  #time.ctime(time.time())
+            #now = time.localtime()
+            #now = time.strftime("%a %b %d. %H:%S")
+            message["t"] = time.ctime(time.time())
         server.write_message(message)
         return T_C
