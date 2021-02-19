@@ -41,7 +41,10 @@ $(document).ready(function(){
 
         if (sData.info == 'T'){
           //T = sData.T.toString().padStart(2,"0");
-          $("#info").html(sData.T + " °C");
+          $("#T_measure").html(sData.T + " °C");
+          if (sData.t !== 'undefined') {
+            $("#info").html(sData.t);
+          }
         }
 
       };
@@ -58,7 +61,7 @@ $(document).ready(function(){
   $("#checkTemp").click(function(){
       let msg = '{"what": "checkT"}';
       ws.send(msg);
-      $("#info").html("Checking Temperature");
+      $("#T_measure").html("Checking Temperature");
   });
 
   $("#hello").click(function(){

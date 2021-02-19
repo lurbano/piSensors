@@ -31,7 +31,7 @@ class sensor_T:
             time.sleep(0.25)
         return T_C
 
-    async def aRead(self, server):
+    async def aRead(self, server, getTime=False):
         l_yes = False
         while (not l_yes):
             with open(self.device_file) as f:
@@ -45,5 +45,8 @@ class sensor_T:
                 #print(lns[0])
                 #print(lns[1])
             time.sleep(0.25)
-        server.write_message({ "info": "T", "T": T_C })
+        message = { "info": "T", "T": T_C }
+        if getTime:
+            message["t"] = time.ctime(time.time())
+        server.write_message(message)
         return T_C
