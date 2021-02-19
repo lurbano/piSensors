@@ -44,13 +44,8 @@ $(document).ready(function(){
           // if (sData.t !== 'undefined') {
           //   $("#info").html(sData.t);
           // }
-<<<<<<< HEAD
-          let now = new date();
-          $("#T_time").append(now.toString());
-=======
           let now = new Date();
-          $("#info").html(now.toString().split(" GMT")[0]);
->>>>>>> 2dcfcb453ea69ff467f66e28bebf196a97abdac5
+          $("#T_time").html(now.toString().split(" GMT")[0]);
 
         }
 
