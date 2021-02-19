@@ -1,6 +1,8 @@
 # piTornado-basic
-Template for using tornado server on raspberry pi
-* Lensyl Urbano
+Sous vide cooker for Raspberry Pi. 
+
+Why? Because my kid wants the roast beef I used to make with the original version of this setup.
+* Author: Lensyl Urbano
 * https://montessorimuddle.org
 
 
@@ -136,6 +138,15 @@ pgrep -a python3
 ```console
 sudo kill nnn
 ```
+
+# Sous Vide
+
+
+
+
+
+
+
 
 
 # [EXAMPLE] Adding things to be controlled by the webpage
