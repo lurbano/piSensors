@@ -13,7 +13,7 @@ class sensor_T:
         self.device_folder = glob.glob(base_dir + '28*')[0]
         self.device_file = device_folder + '/w1_slave'
 
-    async def read():
+    def read():
         l_yes = False
         while (not l_yes):
             with open(self.device_file) as f:
