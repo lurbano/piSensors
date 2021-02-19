@@ -1,6 +1,7 @@
 import time
 import asyncio
-import subprocess
+from subprocess import Popen
+import glob
 
 class sensor_T:
 
@@ -11,10 +12,10 @@ class sensor_T:
         Popen(['modprobe', 'w1-therm'])
 
         self.base_dir = '/sys/bus/w1/devices/'
-        self.device_folder = glob.glob(base_dir + '28*')[0]
-        self.device_file = device_folder + '/w1_slave'
+        self.device_folder = glob.glob(self.base_dir + '28*')[0]
+        self.device_file = self.device_folder + '/w1_slave'
 
-    def read():
+    def read(self):
         l_yes = False
         while (not l_yes):
             with open(self.device_file) as f:
