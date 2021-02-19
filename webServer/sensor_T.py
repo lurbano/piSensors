@@ -1,5 +1,6 @@
 import time
 import asyncio
+import subprocess
 
 class sensor_T:
 
