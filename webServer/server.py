@@ -68,6 +68,10 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 				if msg["opts"] == "off":
 					sys.exit("Stopping server")
 
+			if msg["what"] == "checkT":
+				r = 'Say what?'
+				self.write_message({"info": "hello", "reply":r})
+
 			if msg["what"] == "hello":
 				r = 'Say what?'
 				self.write_message({"info": "hello", "reply":r})

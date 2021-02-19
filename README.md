@@ -1,5 +1,5 @@
 # piTornado-basic
-Sous vide cooker for Raspberry Pi. 
+Sous vide cooker for Raspberry Pi.
 
 Why? Because my kid wants the roast beef I used to make with the original version of this setup.
 * Author: Lensyl Urbano
@@ -37,12 +37,13 @@ network={
 }
 ```
 
-#### 3) USB connection
+#### 3) USB connection and 1-Wire Interface for temperature sensor.
 [copy] over or update files on the SD Card for usb connection (https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget)
 
-***config.txt***: Add `dtoverlay=dwc2` as the last line.
+***config.txt***: Add `dtoverlay=dwc2` as the last line for USB, and add then `dtoverlay=w1-gpio` for 1-Wire.
  ```
 dtoverlay=dwc2
+dtoverlay=w1-gpio
 ```
 
 ***cmdline.txt***: Insert:
@@ -206,3 +207,7 @@ The `Reboot Pi` button shows you how you could live dangerously and run terminal
 OLED:
 * http://codelectron.com/setup-oled-display-raspberry-pi-python/
 * https://learn.adafruit.com/adafruit-pioled-128x32-mini-oled-for-raspberry-pi/usage
+
+Temperature Sensor: DS18B20
+* https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/ds18b20
+* https://www.circuitbasics.com/raspberry-pi-ds18b20-temperature-sensor-tutorial/
