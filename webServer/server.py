@@ -72,7 +72,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 					sys.exit("Stopping server")
 
 			if msg["what"] == "checkT":
-				task = asyncio.create_task(Tsense.aRead(self, getTime=True))
+				task = asyncio.create_task(Tsense.aRead(self))
 
 			if msg["what"] == "hello":
 				r = 'Say what?'
