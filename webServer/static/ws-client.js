@@ -40,13 +40,12 @@ $(document).ready(function(){
         }
 
         if (sData.info == 'T'){
-          //T = sData.T.toString().padStart(2,"0");
           $("#T_measure").html(sData.T + " °C");
           // if (sData.t !== 'undefined') {
           //   $("#info").html(sData.t);
           // }
           let now = new date();
-          $("#info").append(now.toString());
+          $("#T_time").append(now.toString());
 
         }
 
