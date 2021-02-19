@@ -30,3 +30,20 @@ class sensor_T:
                 #print(lns[1])
             time.sleep(0.25)
         return T_C
+
+    async def aRead(self, server):
+        l_yes = False
+        while (not l_yes):
+            with open(self.device_file) as f:
+                lns = f.readlines()
+                if (lns[0].strip()[-3:] == 'YES'):
+                    l_yes = True
+                    equals_pos = lns[1].find('t=')
+                    if equals_pos != -1:
+                        T_str = lns[1][equals_pos+2:]
+                        T_C = float(T_str) / 1000.0
+                #print(lns[0])
+                #print(lns[1])
+            time.sleep(0.25)
+        print(T_C)
+        return T_C

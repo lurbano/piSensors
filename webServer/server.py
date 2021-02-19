@@ -22,6 +22,9 @@ import numpy as np
 #from ledPixels import *
 #from oledU import *
 from basic import *
+from sensor_T import *
+
+Tsense = sensor_T()
 
 nPix = 20
 
@@ -69,8 +72,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 					sys.exit("Stopping server")
 
 			if msg["what"] == "checkT":
-				r = 'Say what?'
-				self.write_message({"info": "hello", "reply":r})
+				task = asyncio.create_task(Tsense.aRead(self))
 
 			if msg["what"] == "hello":
 				r = 'Say what?'
