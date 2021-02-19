@@ -39,6 +39,11 @@ $(document).ready(function(){
           $("#timeLeft").html(m + ":" + s);
         }
 
+        if (sData.info == 'T'){
+          //T = sData.T.toString().padStart(2,"0");
+          $("#info").html(sData.T + " °C");
+        }
+
       };
   };
 

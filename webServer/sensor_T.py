@@ -45,5 +45,5 @@ class sensor_T:
                 #print(lns[0])
                 #print(lns[1])
             time.sleep(0.25)
-        print(T_C)
+        server.write_message({ "info": "T", "T": T_C })
         return T_C
