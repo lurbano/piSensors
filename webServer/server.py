@@ -74,6 +74,12 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 			if msg["what"] == "checkT":
 				task = asyncio.create_task(Tsense.aRead(self))
 
+			if msg["what"] == "logT":
+				t = float(msg["t"])
+				dt = float(msg["dt"])
+				task = asyncio.create_task(Tsense.aLog(self, t, dt))
+
+
 			if msg["what"] == "hello":
 				r = 'Say what?'
 				self.write_message({"info": "hello", "reply":r})

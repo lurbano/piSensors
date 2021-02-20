@@ -2,6 +2,7 @@ import time
 import asyncio
 from subprocess import Popen
 import glob
+import pprint
 
 class sensor_T:
 
@@ -51,4 +52,16 @@ class sensor_T:
             #now = time.strftime("%a %b %d. %H:%S")
             message["t"] = time.ctime(time.time())
         server.write_message(message)
-        return T_C
+        return message
+
+    async def aLog(self, server, t, dt):
+        timeLeft = t
+        logData = []
+        while timeLeft > 0:
+            timeLeft -= dt
+            data = await self.aRead(server, getTime=True)
+            logData.append(data)
+            time.sleep(dt)
+        message = { 'info': "logT", "data": logData }
+        server.write_message(message)
+        pprint(message)

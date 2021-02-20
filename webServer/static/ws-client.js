@@ -49,6 +49,11 @@ $(document).ready(function(){
 
         }
 
+        if (sData.info == 'logT'){
+          console.log(sData.data);
+
+        }
+
       };
   };
 
@@ -64,6 +69,23 @@ $(document).ready(function(){
       let msg = '{"what": "checkT"}';
       ws.send(msg);
       $("#T_measure").html("Checking Temperature");
+  });
+
+  $("#logT").click(function(){
+      let timeMin = parseInt($("#logT_timeMin").val());
+      let timeSec = parseInt($("#logT_timeSec").val());
+      let timeLog = timeMin * 60 + timeSec;
+
+      let dtMin = parseInt($("#logT_dtMin").val());
+      let dtSec = parseInt($("#logT_dtSec").val());
+      let dt = dtMin * 60 + dtSec;
+
+      let msg = {
+        "what": "logT",
+        "t": timeLog,
+        "dt": dt
+      }
+      ws.send(JSON.stringify(msg));
   });
 
   $("#hello").click(function(){

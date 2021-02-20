@@ -60,6 +60,8 @@ dtoverlay=dwc2
 dtoverlay=w1-gpio
 ```
 
+NOTE: Another option for setting up 1-Wire is to do it through `raspi-config` when the pi is running (as described in the Enable Interfaces section).
+
 ***cmdline.txt***: Insert:
 ``` modules-load=dwc2,g_ether```
 after `rootwait` (e.g. `rootwait modules-load=dwc2,g_ether`).
@@ -95,11 +97,21 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
+### Enable Interfaces
+run `raspi-config` and enable needed interfaces (see https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/ds18b20):
+```console
+sudo raspi-config
+```
+Enable Interfaces
+* 1-Wire for:
+** Temperature sensor
+
+
 ### REBOOT pi
  ```console
 sudo reboot
 ```
-```
+
 
 # Installing this software: r
 From your home directory clone the github repository.
