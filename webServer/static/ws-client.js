@@ -51,8 +51,7 @@ $(document).ready(function(){
 
         if (sData.info == 'logT'){
           console.log(sData);
-          //dataTable(sData);
-          dataT = new dataTableX("logData", "deg C");
+          dataT = new dataTable("logData", "deg C");
           dataT.setupTable();
           dataT.writeAllData(sData);
 
@@ -115,44 +114,9 @@ $(document).ready(function(){
 
 });
 
-function dataTable(data){
-  let table = document.createElement("table");
-  let thead = table.createTHead();
-  let row = thead.insertRow();
 
-  let th = document.createElement('th');
-  th.appendChild(document.createTextNode("time"));
-  row.appendChild(th);
 
-  th = document.createElement('th');
-  th.appendChild(document.createTextNode(data.info));
-  row.appendChild(th);
-
-  let body = document.createElement('TBODY');
-  table.appendChild(body);
-
-  for (let i = 0; i< data.logData.length; i++){
-    let tr = document.createElement("TR");
-
-    let t = document.createElement("TD");
-    t.appendChild(document.createTextNode(data.logData[i]["t"]));
-    tr.appendChild(t);
-
-    let val = document.createElement("TD");
-    val.appendChild(document.createTextNode(data.logData[i]["x"]));
-    tr.appendChild(val);
-
-    body.appendChild(tr);
-  }
-
-  let tableDiv = document.getElementById("logData");
-  while (tableDiv.firstChild){
-    tableDiv.removeChild(tableDiv.firstChild);
-  }
-  tableDiv.appendChild(table);
-}
-
-class dataTableX{
+class dataTable{
   constructor(targetDiv, dataTitle){
     this.targetDiv = targetDiv;
     this.dataTitle = dataTitle;
