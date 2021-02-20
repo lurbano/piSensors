@@ -1,12 +1,26 @@
 # piSensors
 Attaching using a Raspberry Pi as a data logger with different sensors:
-1) DS18B20 temperature sensor 
+1) DS18B20 temperature sensor using 1Wire
 
 * Author: Lensyl Urbano
 * https://montessorimuddle.org
 
+# Wiring
 
-# Set up Raspberry Pi
+## Temperature
+Standard wiring diagram at: https://www.circuitbasics.com/raspberry-pi-ds18b20-temperature-sensor-tutorial/
+
+Components:
+* 4.7 k Ohm or 10 K Ohm resistor
+
+Pins:
+* GPIO 4: 1Wire uses GPIO 4 by default.
+** More details (and how to use other pins for 1Wire): https://pinout.xyz/pinout/1_wire#
+* 3v3: for 3.3V power
+* GND: ground
+
+
+# Software: Set up Raspberry Pi SD Card
 
 ## Install OS
 ### Create image on the SD card:
@@ -90,7 +104,7 @@ sudo reboot
 # Installing this software: r
 From your home directory clone the github repository.
 ```console
-git clone https://github.com/lurbano/piTornado-basic.git
+git clone https://github.com/lurbano/piSensors.git
 ```
 
 # Setting up Server
@@ -102,7 +116,7 @@ sudo pip3 install tornado
 ```
 
 ### Starting server
-Go to the folder *~/piTornado/webServer/* and run the command
+Go to the folder *~/piSensors/webServer/* and run the command
 ```console
 sudo python3 server.py
 ```
@@ -121,7 +135,7 @@ sudo nano /etc/rc.local
 
 ADD THE LINE (before `exit 0` ).
 ```
-sudo /usr/bin/python3 /home/pi/piTornado-basic/webServer/server.py  2> /home/pi/rpi-led-strip/error.log &
+sudo /usr/bin/python3 /home/pi/piSensors/webServer/server.py  2> /home/pi/rpi-led-strip/error.log &
 ```
 
 Save and exit (Ctrl-S and Ctrl-X) and then restart the Pi from the command line:
@@ -139,14 +153,6 @@ pgrep -a python3
 ```console
 sudo kill nnn
 ```
-
-# Sous Vide
-
-
-
-
-
-
 
 
 
