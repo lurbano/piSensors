@@ -56,12 +56,15 @@ class sensor_T:
 
     async def aLog(self, server, t, dt):
         timeLeft = t
-        logData = []
+        message = {}
+        message["info"] = "logT"
+        message['start'] = time.ctime(time.time())
+        message['logData'] = []
         while timeLeft > 0:
             timeLeft -= dt
             data = await self.aRead(server, getTime=True)
-            logData.append(data)
+            data["ts"] = t - timeLeft
+            message.logData.append(data)
             time.sleep(dt)
-        message = { 'info': "logT", "data": logData }
         server.write_message(message)
-        pprint(message)
+        pprint.pprint(message)
