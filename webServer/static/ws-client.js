@@ -132,11 +132,11 @@ function dataTable(data){
     let tr = document.createElement("TR");
 
     let t = document.createElement("TD");
-    t.appendChild(createTextNode(data.logData[i]["t"]));
+    t.appendChild(document.createTextNode(data.logData[i]["t"]));
     tr.appendChild(t);
 
     let val = document.createElement("TD");
-    val.appendChild(createTextNode(data.logData[i]["x"]));
+    val.appendChild(document.createTextNode(data.logData[i]["x"]));
     tr.appendChild(val);
 
     body.appendChild(tr);
