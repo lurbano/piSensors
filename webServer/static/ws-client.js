@@ -51,7 +51,9 @@ $(document).ready(function(){
 
         if (sData.info == 'logT'){
           console.log(sData);
-          dataTable(sData);
+          //dataTable(sData);
+          dataT = new dataTableX("logData", "deg C");
+          dataT.writeAllData(sData);
 
         }
 
@@ -147,4 +149,49 @@ function dataTable(data){
     tableDiv.removeChild(tableDiv.firstChild);
   }
   tableDiv.appendChild(table);
+}
+
+class dataTableX{
+  constructor(targetDiv, dataTitle){
+    this.targetDiv = targetDiv;
+    this.dataTitle = dataTitle;
+  }
+  setupTable(){
+    this.table = document.createElement("table");
+    let thead = this.table.createTHead();
+    let row = thead.insertRow();
+
+    let th = document.createElement('th');
+    th.appendChild(document.createTextNode("time"));
+    row.appendChild(th);
+
+    th = document.createElement('th');
+    th.appendChild(document.createTextNode(this.dataTitle));
+    row.appendChild(th);
+
+    this.body = document.createElement('TBODY');
+    table.appendChild(self.body);
+
+    let tableDiv = document.getElementById(this.targetDiv);
+    while (tableDiv.firstChild){
+      tableDiv.removeChild(tableDiv.firstChild);
+    }
+    tableDiv.appendChild(table);
+  }
+  writeAllData(data){
+    for (let i = 0; i< data.logData.length; i++){
+      let tr = document.createElement("TR");
+
+      let t = document.createElement("TD");
+      t.appendChild(document.createTextNode(data.logData[i]["t"]));
+      tr.appendChild(t);
+
+      let val = document.createElement("TD");
+      val.appendChild(document.createTextNode(data.logData[i]["x"]));
+      tr.appendChild(val);
+
+      this.body.appendChild(tr);
+    }
+  }
+
 }
