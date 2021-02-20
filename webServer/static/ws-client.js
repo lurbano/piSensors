@@ -143,6 +143,8 @@ function dataTable(data){
   }
 
   let tableDiv = document.getElementById("logData");
-  tableDiv.removeChild(tableDiv.firstChild);
+  while (tableDiv.firstChild){
+    tableDiv.removeChild(tableDiv.firstChild);
+  }
   tableDiv.appendChild(table);
 }
