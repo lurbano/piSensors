@@ -82,7 +82,8 @@ class sensor_T:
             timeLeft -=dt
 
         message['logData'] = self.log
-        server.write_message(message)
+        if update != "live":
+            server.write_message(message)
         pprint.pprint(message)
 
 class logger:

@@ -56,7 +56,7 @@ $(document).ready(function(){
           dataT.writeAllData(sData);
         }
         if (sData.info == 'logUpdate'){
-          dataT.addRow(sData.info);
+          dataT.addRow(sData);
         }
 
       };
