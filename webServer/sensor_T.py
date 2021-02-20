@@ -61,7 +61,7 @@ class sensor_T:
         server.write_message(message)
         return message
 
-    async def aLog(self, server, t, dt):
+    async def aLog(self, server, t, dt, update="live"):
         # self.log = logger("logT", t, dt, self.aRead, self)
         # data = await self.log.logData()
 
@@ -77,7 +77,7 @@ class sensor_T:
         while timeLeft >= 0:
             await asyncio.gather(
                 asyncio.sleep(dt),
-                self.aRead(server, True, True)
+                self.aRead(server, True, True, update)
             )
             timeLeft -=dt
 
