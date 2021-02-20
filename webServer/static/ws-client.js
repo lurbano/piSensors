@@ -51,6 +51,7 @@ $(document).ready(function(){
 
         if (sData.info == 'logT'){
           console.log(sData);
+          dataTable(sData);
 
         }
 
@@ -137,11 +138,11 @@ function dataTable(data){
     let val = document.createElement("TD");
     val.innerHTML(data.logData[i]["x"]);
     tr.appendChild(val);
-    
+
     body.appendChild(tr);
   }
 
   let tableDiv = document.getElementById("logData");
-  tableDiv.remove();
+  tableDiv.removeChild(tableDiv.firstChild);
   tableDiv.appendChild(table);
 }
