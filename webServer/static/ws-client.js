@@ -200,11 +200,11 @@ class dataTableX{
     let tr = document.createElement("TR");
 
     let t = document.createElement("TD");
-    t.appendChild(document.createTextNode(rowlist["t"]));
+    t.appendChild(document.createTextNode(rowList["t"]));
     tr.appendChild(t);
 
     let val = document.createElement("TD");
-    val.appendChild(document.createTextNode(rowlist["x"]));
+    val.appendChild(document.createTextNode(rowList["x"]));
     tr.appendChild(val);
 
     this.body.appendChild(tr);
