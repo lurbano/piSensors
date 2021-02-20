@@ -13,6 +13,10 @@
     input[type=number]{
       width: 5em;
     }
+    .sensorBlock {
+      border: 1px solid red;
+      background-color: khaki;
+    }
   </style>
 
 </head>
@@ -34,7 +38,7 @@ Info:<span id="info">Hi</span>
 <input type="button" id="hello" value="Hello World">
 <span id="HelloResponse"></span>
 
-<p>
+<div class="sensorBlock">
   <input type="button" id="logT" value="Start Logging">
   <div> Log Time:
     <input type="number" id="logT_timeMin" min="0" value="0" title="minutes">
@@ -45,7 +49,7 @@ Info:<span id="info">Hi</span>
     <input type="number" id="logT_dtSec" min="0" value="0" title="seconds">
   </div>
   <span id="timeLeft"></span>
-<p>
+</div>
 
 <p>
   <input type="button" id="timer" value="Start Timer">

@@ -60,11 +60,12 @@ class sensor_T:
         message["info"] = "logT"
         message['start'] = time.ctime(time.time())
         message['logData'] = []
-        while timeLeft > 0:
-            timeLeft -= dt
+        while timeLeft >= 0:
             data = await self.aRead(server, getTime=True)
             data["ts"] = t - timeLeft
             message['logData'].append(data)
             time.sleep(dt)
+            timeLeft -= dt
+
         server.write_message(message)
         pprint.pprint(message)
