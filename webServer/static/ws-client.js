@@ -109,5 +109,35 @@ $(document).ready(function(){
   });
 
 
-
 });
+
+function dataTable(data){
+  let table = document.createElement("table");
+  let thead = table.createTHead();
+  let row = thead.insertRow();
+  let th = document.createElement('th');
+  th.innerHTML("time");
+  row.appendChild(th);
+  let th = document.createElement('th');
+  th.innerHTML(data.info);
+  row.appendChild(th);
+
+  let body = document.createElement('TBODY');
+  table.appendChild(body);
+
+  for (let i = 0; i< data.logData.length; i++){
+    let tr = document.createElement("TR");
+
+    let t = document.createElement("TD");
+    t.innerHTML(data.logData[i]["t"]);
+    tr.appendChild(t);
+
+    let val = document.createElement("TD");
+    val.innerHTML(data.logData[i]["x"]);
+    tr.appendChild(val);
+  }
+
+  let tableDiv = document.getElementById("logData");
+  tableDiv.remove();
+  tableDiv.appendChild(table);
+}

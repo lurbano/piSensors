@@ -39,6 +39,14 @@ Info:<span id="info">Hi</span>
 <input type="button" id="hello" value="Hello World">
 <span id="HelloResponse"></span>
 
+<p>
+  <input type="button" id="timer" value="Start Timer">
+  <input type="number" id="timerMin" min="0" value="0" title="minutes">
+  <input type="number" id="timerSec" min="0" value="0" title="seconds">
+  <span id="timeLeft"></span>
+<p>
+
+
 <div class="sensorBlock">
   <input type="button" id="logT" value="Start Logging">
   <div> Log Time:
@@ -50,14 +58,9 @@ Info:<span id="info">Hi</span>
     <input type="number" id="logT_dtSec" min="0" value="0" title="seconds">
   </div>
   <span id="timeLeft"></span>
+  <div id="logData"></div>
 </div>
 
-<p>
-  <input type="button" id="timer" value="Start Timer">
-  <input type="number" id="timerMin" min="0" value="0" title="minutes">
-  <input type="number" id="timerSec" min="0" value="0" title="seconds">
-  <span id="timeLeft"></span>
-<p>
 
 <br>
 <input type="button" id="reboot" value="Reboot Pi">
