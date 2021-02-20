@@ -177,7 +177,7 @@ class dataTableX{
     while (tableDiv.firstChild){
       tableDiv.removeChild(tableDiv.firstChild);
     }
-    tableDiv.appendChild(table);
+    tableDiv.appendChild(this.table);
   }
   writeAllData(data){
     for (let i = 0; i< data.logData.length; i++){
