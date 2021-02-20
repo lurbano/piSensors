@@ -53,6 +53,7 @@ $(document).ready(function(){
           console.log(sData);
           //dataTable(sData);
           dataT = new dataTableX("logData", "deg C");
+          dataT.setupTable();
           dataT.writeAllData(sData);
 
         }
