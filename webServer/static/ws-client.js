@@ -152,7 +152,7 @@ class dataTable{
   writeAllData(data){
     for (let i = 0; i< data.logData.length; i++){
 
-      this.addData(data.logData[i]);
+      this.addRow(data.logData[i]);
       // let tr = document.createElement("TR");
       //
       // let t = document.createElement("TD");
@@ -166,7 +166,7 @@ class dataTable{
       // this.body.appendChild(tr);
     }
   }
-  addData(rowList){
+  addRow(rowList){
     let tr = document.createElement("TR");
 
     let t = document.createElement("TD");
