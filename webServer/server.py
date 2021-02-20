@@ -78,7 +78,8 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 				Tsense = sensor_T()
 				t = float(msg["t"])
 				dt = float(msg["dt"])
-				task = asyncio.create_task(Tsense.aLog(self, t, dt))
+				update = msg["update"]
+				task = asyncio.create_task(Tsense.aLog(self, t, dt, update))
 
 
 			if msg["what"] == "hello":

@@ -79,7 +79,7 @@ $(document).ready(function(){
   $("#logT").click(function(){
       dataT = new dataTable("logData", "deg C");
       dataT.setupTable();
-      
+
       let timeMin = parseInt($("#logT_timeMin").val());
       let timeSec = parseInt($("#logT_timeSec").val());
       let timeLog = timeMin * 60 + timeSec;
@@ -91,7 +91,8 @@ $(document).ready(function(){
       let msg = {
         "what": "logT",
         "t": timeLog,
-        "dt": dt
+        "dt": dt,
+        "update": "live"
       }
       ws.send(JSON.stringify(msg));
   });
