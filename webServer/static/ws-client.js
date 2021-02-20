@@ -118,11 +118,11 @@ function dataTable(data){
   let row = thead.insertRow();
 
   let th = document.createElement('th');
-  th.innerHTML("time");
+  th.appendChild(document.createTextNode("time");
   row.appendChild(th);
 
   th = document.createElement('th');
-  th.innerHTML(data.info);
+  th.appendChild(document.createTextNode(data.info));
   row.appendChild(th);
 
   let body = document.createElement('TBODY');
@@ -132,11 +132,11 @@ function dataTable(data){
     let tr = document.createElement("TR");
 
     let t = document.createElement("TD");
-    t.innerHTML(data.logData[i]["t"]);
+    t.appendChild(createTextNode(data.logData[i]["t"]);
     tr.appendChild(t);
 
     let val = document.createElement("TD");
-    val.innerHTML(data.logData[i]["x"]);
+    val.appendChild(createTextNode(data.logData[i]["x"]));
     tr.appendChild(val);
 
     body.appendChild(tr);
