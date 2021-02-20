@@ -171,7 +171,7 @@ class dataTableX{
     row.appendChild(th);
 
     this.body = document.createElement('TBODY');
-    table.appendChild(this.body);
+    this.table.appendChild(this.body);
 
     let tableDiv = document.getElementById(this.targetDiv);
     while (tableDiv.firstChild){
