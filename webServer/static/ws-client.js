@@ -51,10 +51,12 @@ $(document).ready(function(){
 
         if (sData.info == 'logT'){
           console.log(sData);
-          dataT = new dataTable("logData", "deg C");
-          dataT.setupTable();
+          // dataT = new dataTable("logData", "deg C");
+          // dataT.setupTable();
           dataT.writeAllData(sData);
-
+        }
+        if (sData.info == 'logUpdate'){
+          dataT.addRow(sData.info);
         }
 
       };
@@ -75,6 +77,9 @@ $(document).ready(function(){
   });
 
   $("#logT").click(function(){
+      dataT = new dataTable("logData", "deg C");
+      dataT.setupTable();
+      
       let timeMin = parseInt($("#logT_timeMin").val());
       let timeSec = parseInt($("#logT_timeSec").val());
       let timeLog = timeMin * 60 + timeSec;
