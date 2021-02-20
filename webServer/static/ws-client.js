@@ -118,7 +118,7 @@ function dataTable(data){
   let row = thead.insertRow();
 
   let th = document.createElement('th');
-  th.appendChild(document.createTextNode("time");
+  th.appendChild(document.createTextNode("time"));
   row.appendChild(th);
 
   th = document.createElement('th');
