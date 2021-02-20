@@ -48,11 +48,11 @@ class sensor_T:
                 #print(lns[0])
                 #print(lns[1])
             time.sleep(0.25)
-        message = {"x": T_C }
+        message = {"T": T_C }
         if getTime:
             message["t"] = time.ctime(time.time())
         if log:
-            self.log.append({"x": T_C, "t":time.time()-self.startTime})
+            self.log.append({"x": T_C, "t":round(time.time()-self.startTime, 4)})
         message["info"] = "T"
         server.write_message(message)
         return message
