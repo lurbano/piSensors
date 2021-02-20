@@ -1,7 +1,7 @@
-# piTornado-basic
-Sous vide cooker for Raspberry Pi.
+# piSensors
+Attaching using a Raspberry Pi as a data logger with different sensors:
+1) DS18B20 temperature sensor 
 
-Why? Because my kid wants the roast beef I used to make with the original version of this setup.
 * Author: Lensyl Urbano
 * https://montessorimuddle.org
 
