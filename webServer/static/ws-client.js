@@ -115,10 +115,12 @@ function dataTable(data){
   let table = document.createElement("table");
   let thead = table.createTHead();
   let row = thead.insertRow();
+
   let th = document.createElement('th');
   th.innerHTML("time");
   row.appendChild(th);
-  let th = document.createElement('th');
+
+  th = document.createElement('th');
   th.innerHTML(data.info);
   row.appendChild(th);
 
@@ -135,6 +137,8 @@ function dataTable(data){
     let val = document.createElement("TD");
     val.innerHTML(data.logData[i]["x"]);
     tr.appendChild(val);
+    
+    body.appendChild(tr);
   }
 
   let tableDiv = document.getElementById("logData");
