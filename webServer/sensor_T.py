@@ -16,6 +16,8 @@ class sensor_T:
         self.device_folder = glob.glob(self.base_dir + '28*')[0]
         self.device_file = self.device_folder + '/w1_slave'
 
+        self.log = []
+
     def read(self):
         l_yes = False
         while (not l_yes):
@@ -32,7 +34,7 @@ class sensor_T:
             time.sleep(0.25)
         return T_C
 
-    async def aRead(self, server, getTime=False):
+    async def aRead(self, server, getTime=False, log=False):
         l_yes = False
         while (not l_yes):
             with open(self.device_file) as f:
@@ -51,21 +53,56 @@ class sensor_T:
             #now = time.localtime()
             #now = time.strftime("%a %b %d. %H:%S")
             message["t"] = time.ctime(time.time())
+        if log:
+            self.log.append(message)
         server.write_message(message)
         return message
 
     async def aLog(self, server, t, dt):
+        # self.log = logger("logT", t, dt, self.aRead, self)
+        # data = await self.log.logData()
+
         timeLeft = t
         message = {}
-        message["info"] = "logT"
         message['start'] = time.ctime(time.time())
-        message['logData'] = []
-        while timeLeft >= 0:
-            data = await self.aRead(server, getTime=True)
-            data["ts"] = t - timeLeft
-            message['logData'].append(data)
-            time.sleep(dt)
-            timeLeft -= dt
+        message["info"] = "logT"
+        #message['logData'] = []
 
+        self.log = []   #reset log
+
+        while timeLeft >= 0:
+            await asyncio.gather(
+                asyncio.sleep(dt),
+                self.aRead(server, True, True)
+            )
+            timeLeft -=dt
+
+
+            # data = await self.aRead(server, getTime=True)
+            # data["ts"] = t - timeLeft
+            # message['logData'].append(data)
+            # time.sleep(dt)
+            # timeLeft -= dt
+        
+        message['logData'] = self.log
         server.write_message(message)
         pprint.pprint(message)
+
+class logger:
+    def __init__(self, info, t, dt, readFunc, caller):
+        self.info = info            # type of data: e.g. "logT"
+        self.t = t                  # how long
+        self.dt = dt                # timestep
+        self.readFunc = readFunc    # function that reads the data from sensor
+        self.caller = caller        # the instance that is using this logger
+
+        self.timeLeft = t
+        self.data = []
+
+    async def logData(self):
+        self.startTime = time.time()
+        while self.timeLeft >= 0:
+            await asyncio.gather(
+                asyncio.sleep(dt),
+                self.readFunc()
+            )
