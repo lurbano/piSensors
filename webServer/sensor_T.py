@@ -64,7 +64,7 @@ class sensor_T:
             timeLeft -= dt
             data = await self.aRead(server, getTime=True)
             data["ts"] = t - timeLeft
-            message.logData.append(data)
+            message['logData'].append(data)
             time.sleep(dt)
         server.write_message(message)
         pprint.pprint(message)
