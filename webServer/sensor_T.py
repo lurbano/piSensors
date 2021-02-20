@@ -48,13 +48,12 @@ class sensor_T:
                 #print(lns[0])
                 #print(lns[1])
             time.sleep(0.25)
-        message = { "info": "T", "T": T_C }
+        message = {"x": T_C }
         if getTime:
-            #now = time.localtime()
-            #now = time.strftime("%a %b %d. %H:%S")
             message["t"] = time.ctime(time.time())
         if log:
-            self.log.append(message)
+            self.log.append({"x": T_C, "t":time.time()-self.startTime})
+        message["info"] = "T"
         server.write_message(message)
         return message
 
@@ -64,9 +63,10 @@ class sensor_T:
 
         timeLeft = t
         message = {}
-        message['start'] = time.ctime(time.time())
         message["info"] = "logT"
+        message['start'] = time.ctime(time.time())
         #message['logData'] = []
+        self.startTime = time.time()
 
         self.log = []   #reset log
 
@@ -77,13 +77,6 @@ class sensor_T:
             )
             timeLeft -=dt
 
-
-            # data = await self.aRead(server, getTime=True)
-            # data["ts"] = t - timeLeft
-            # message['logData'].append(data)
-            # time.sleep(dt)
-            # timeLeft -= dt
-        
         message['logData'] = self.log
         server.write_message(message)
         pprint.pprint(message)

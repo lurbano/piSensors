@@ -24,7 +24,6 @@ import numpy as np
 from basic import *
 from sensor_T import *
 
-Tsense = sensor_T()
 
 nPix = 20
 
@@ -72,9 +71,11 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 					sys.exit("Stopping server")
 
 			if msg["what"] == "checkT":
+				Tsense = sensor_T()
 				task = asyncio.create_task(Tsense.aRead(self))
 
 			if msg["what"] == "logT":
+				Tsense = sensor_T()
 				t = float(msg["t"])
 				dt = float(msg["dt"])
 				task = asyncio.create_task(Tsense.aLog(self, t, dt))

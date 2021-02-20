@@ -50,7 +50,7 @@ $(document).ready(function(){
         }
 
         if (sData.info == 'logT'){
-          console.log(sData.logData);
+          console.log(sData);
 
         }
 
