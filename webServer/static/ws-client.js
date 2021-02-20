@@ -181,18 +181,33 @@ class dataTableX{
   }
   writeAllData(data){
     for (let i = 0; i< data.logData.length; i++){
-      let tr = document.createElement("TR");
 
-      let t = document.createElement("TD");
-      t.appendChild(document.createTextNode(data.logData[i]["t"]));
-      tr.appendChild(t);
-
-      let val = document.createElement("TD");
-      val.appendChild(document.createTextNode(data.logData[i]["x"]));
-      tr.appendChild(val);
-
-      this.body.appendChild(tr);
+      this.addData(data.logData[i]);
+      // let tr = document.createElement("TR");
+      //
+      // let t = document.createElement("TD");
+      // t.appendChild(document.createTextNode(data.logData[i]["t"]));
+      // tr.appendChild(t);
+      //
+      // let val = document.createElement("TD");
+      // val.appendChild(document.createTextNode(data.logData[i]["x"]));
+      // tr.appendChild(val);
+      //
+      // this.body.appendChild(tr);
     }
+  }
+  addData(rowList){
+    let tr = document.createElement("TR");
+
+    let t = document.createElement("TD");
+    t.appendChild(document.createTextNode(rowlist["t"]));
+    tr.appendChild(t);
+
+    let val = document.createElement("TD");
+    val.appendChild(document.createTextNode(rowlist["x"]));
+    tr.appendChild(val);
+
+    this.body.appendChild(tr);
   }
 
 }
