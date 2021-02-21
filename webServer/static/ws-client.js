@@ -81,6 +81,7 @@ $(document).ready(function(){
       dataT.setupTable();
 
       graphT = new dataGraph("logGraph", "deg C");
+      console.log(graphT.plot.data);
 
       let timeMin = parseInt($("#logT_timeMin").val());
       let timeSec = parseInt($("#logT_timeSec").val());
