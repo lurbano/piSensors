@@ -214,9 +214,9 @@ class dataGraph{
     let newy = parseFloat(dataList["x"]);
     console.log(newx, newy);
 
-    let update = { x: [[newx]], y: [[newy]]};
+    let update = { x: [newx], y: [newy]};
     console.log(update);
 
-    Plotly.extendTraces(this.plot, update, [[0]] );
+    Plotly.extendTraces(this.plot, update, {}, [[0]] );
   }
 }
