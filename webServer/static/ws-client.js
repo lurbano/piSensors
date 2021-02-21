@@ -212,6 +212,7 @@ class dataGraph{
     // let y = this.plot.data[0].y.push(dataList["x"]);
     let x = dataList["t"];
     let y = dataList["x"];
+    console.log(x,y);
     let update = {'x': [[x]], 'y': [[y]]};
 
     Plotly.extendTraces(this.plot, update, {} );
