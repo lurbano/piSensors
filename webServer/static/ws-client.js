@@ -60,6 +60,7 @@ $(document).ready(function(){
           graphT.addDataPoint(sData);
 
           $("#timeLeftT").html("-"+sData.timeLeft+" s");
+          $("#timeLeftT").css("width", 100*sData.timeLeft/timeLog);
         }
 
       };
@@ -88,7 +89,7 @@ $(document).ready(function(){
 
       let timeMin = parseInt($("#logT_timeMin").val());
       let timeSec = parseInt($("#logT_timeSec").val());
-      let timeLog = timeMin * 60 + timeSec;
+      timeLog = timeMin * 60 + timeSec;
 
       let dtMin = parseInt($("#logT_dtMin").val());
       let dtSec = parseInt($("#logT_dtSec").val());
