@@ -217,6 +217,6 @@ class dataGraph{
     let update = { x: [[newx]], y: [[newy]]};
     console.log(update);
 
-    Plotly.extendTraces(this.plot, update, {}, [0] );
+    Plotly.extendTraces(this.plot, update, [0] );
   }
 }
