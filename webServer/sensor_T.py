@@ -84,7 +84,7 @@ class sensor_T:
         message['logData'] = self.log
         if update != "live":
             server.write_message(message)
-        pprint.pprint(message)
+        #pprint.pprint(message)
 
 class logger:
     def __init__(self, info, t, dt, readFunc, caller):

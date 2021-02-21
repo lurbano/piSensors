@@ -78,10 +78,10 @@ $(document).ready(function(){
   });
 
   $("#logT").click(function(){
-      dataT = new dataTable("logData", "deg C");
+      dataT = new dataTable("logData", "°C");
       dataT.setupTable();
 
-      graphT = new dataGraph("logGraph", "deg C");
+      graphT = new dataGraph("logGraph", "°C");
       console.log(graphT.plot.data);
 
       let timeMin = parseInt($("#logT_timeMin").val());
@@ -137,7 +137,7 @@ class dataTable{
     let row = thead.insertRow();
 
     let th = document.createElement('th');
-    th.appendChild(document.createTextNode("time"));
+    th.appendChild(document.createTextNode("time (s)"));
     row.appendChild(th);
 
     th = document.createElement('th');
@@ -202,8 +202,13 @@ class dataGraph{
         }
       ],
       {
-    	   margin: { t: 0 }
-       }
+        xaxis: {
+          title: "time (s)"
+        },
+    	  yaxis: {
+          title: this.dataTitle
+        }
+      }
     );
 
     this.plot.style.height = "30opx";
