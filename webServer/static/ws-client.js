@@ -159,17 +159,6 @@ class dataTable{
     for (let i = 0; i< data.logData.length; i++){
 
       this.addRow(data.logData[i]);
-      // let tr = document.createElement("TR");
-      //
-      // let t = document.createElement("TD");
-      // t.appendChild(document.createTextNode(data.logData[i]["t"]));
-      // tr.appendChild(t);
-      //
-      // let val = document.createElement("TD");
-      // val.appendChild(document.createTextNode(data.logData[i]["x"]));
-      // tr.appendChild(val);
-      //
-      // this.body.appendChild(tr);
     }
   }
   addRow(rowList){
@@ -213,12 +202,10 @@ class dataGraph{
       }
     );
 
-    this.plot.style.height = "30opx";
+    this.plot.style.height = "300px";
 
   }
   addDataPoint( dataList ){
-    // let x = this.plot.data[0].x.push(dataList["t"]);
-    // let y = this.plot.data[0].y.push(dataList["x"]);
     let newx = parseFloat(dataList["t"]);
     let newy = parseFloat(dataList["x"]);
     console.log(newx, newy);
