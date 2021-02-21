@@ -80,7 +80,7 @@ class sensor_T:
                 asyncio.sleep(dt),
                 self.aRead(server, True, True, update)
             )
-            timeLeft -=dt
+            self.timeLeft -=dt
 
         message['logData'] = self.log
         if update != "live":

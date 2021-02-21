@@ -59,7 +59,7 @@ $(document).ready(function(){
           dataT.addRow(sData);
           graphT.addDataPoint(sData);
 
-          $("#timeLeftT").html(sData.timeLeft);
+          $("#timeLeftT").html("-"+sData.timeLeft);
         }
 
       };
