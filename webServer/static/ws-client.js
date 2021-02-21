@@ -210,11 +210,12 @@ class dataGraph{
   addDataPoint( dataList ){
     // let x = this.plot.data[0].x.push(dataList["t"]);
     // let y = this.plot.data[0].y.push(dataList["x"]);
-    let x = dataList["t"];
-    let y = dataList["x"];
+    let x = parseFloat(dataList["t"]);
+    let y = parseFloat(dataList["x"]);
     console.log(x,y);
     let update = {'x': [[x]], 'y': [[y]]};
-
+    console.log(update);
+    
     Plotly.extendTraces(this.plot, update, {} );
   }
 }
