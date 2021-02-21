@@ -206,6 +206,8 @@ class dataGraph{
        }
     );
 
+    this.plot.style.height = "30opx";
+
   }
   addDataPoint( dataList ){
     // let x = this.plot.data[0].x.push(dataList["t"]);
