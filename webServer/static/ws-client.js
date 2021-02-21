@@ -212,7 +212,7 @@ class dataGraph{
     // let y = this.plot.data[0].y.push(dataList["x"]);
     let newx = parseFloat(dataList["t"]);
     let newy = parseFloat(dataList["x"]);
-    console.log(x,y);
+    console.log(newx, newy);
     let update = { x: [[newx]], y: [[newy]]};
     console.log(update);
 
