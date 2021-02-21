@@ -59,7 +59,7 @@ $(document).ready(function(){
           dataT.addRow(sData);
           graphT.addDataPoint(sData);
 
-          $("#timeLeftT").html("-"+sData.timeLeft+" s");
+          $("#countdownData").html("-"+sData.timeLeft+" s");
           $("#timeLeftT").css("width", 100*sData.timeLeft/timeLog);
         }
 
