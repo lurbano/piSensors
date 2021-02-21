@@ -55,7 +55,8 @@ class sensor_T:
             m = {"x": T_C, "t":round(time.time()-self.startTime, 4)}
             self.log.append(m)
             if update == "live":
-                m["info"] = "logUpdate"
+                m['timeLeft'] = self.timeLeft
+                m["info"] = "logUp"
                 server.write_message(m)
         message["info"] = "T"
         server.write_message(message)
@@ -65,7 +66,7 @@ class sensor_T:
         # self.log = logger("logT", t, dt, self.aRead, self)
         # data = await self.log.logData()
 
-        timeLeft = t
+        self.timeLeft = t
         message = {}
         message["info"] = "logT"
         message['start'] = time.ctime(time.time())
@@ -74,7 +75,7 @@ class sensor_T:
 
         self.log = []   #reset log
 
-        while timeLeft >= 0:
+        while self.timeLeft >= 0:
             await asyncio.gather(
                 asyncio.sleep(dt),
                 self.aRead(server, True, True, update)

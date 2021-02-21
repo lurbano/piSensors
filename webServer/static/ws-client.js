@@ -55,9 +55,11 @@ $(document).ready(function(){
           // dataT.setupTable();
           dataT.writeAllData(sData);
         }
-        if (sData.info == 'logUpdate'){
+        if (sData.info == 'logUp'){
           dataT.addRow(sData);
           graphT.addDataPoint(sData);
+
+          $("#timeLeftT").html(sData.timeLeft);
         }
 
       };
