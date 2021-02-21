@@ -80,6 +80,8 @@ $(document).ready(function(){
       dataT = new dataTable("logData", "deg C");
       dataT.setupTable();
 
+      graphT = new dataGraph("logGraph", "deg C");
+
       let timeMin = parseInt($("#logT_timeMin").val());
       let timeSec = parseInt($("#logT_timeSec").val());
       let timeLog = timeMin * 60 + timeSec;
@@ -180,4 +182,66 @@ class dataTable{
     this.body.appendChild(tr);
   }
 
+}
+
+class dataGraph{
+  constructor(targetDiv, dataTitle){
+    this.targetDiv = targetDiv;
+    this.dataTitle = dataTitle;
+
+    this.plot = document.getElementById(targetDiv);
+
+    Plotly.newPlot( this.plot,
+      [
+        {
+        	x: [1, 2, 3, 4, 5],
+        	y: [1, 2, 4, 8, 16]
+        }
+      ],
+      {
+    	   margin: { t: 0 }
+       }
+    );
+
+  }
+  generate_graph(tdata, cdata, rdata){
+  	//Generate graph
+  	//ctx = $("#temp_graph");
+  	lastX = tdata[tdata.length-1].x;
+  	lastY = tdata[tdata.length-1].y;
+  	t_chart = new Chart(this.ctx, {
+  		type: 'scatter',
+  		data: {
+  			datasets: [{
+  				label: this.dataTitle,
+  				pointBackgroundColor: cdata, //'rgba(255, 100, 100, 0.9)',
+  				//pointRadius: rdata,
+  				pointHoverRadius: hoverRadius,
+  				data: tdata
+  			},
+  			{
+  				label: "Timer",
+  				showLine: true,
+  				data: [{x: tdata[iSel].x, y: lastY}, {x: lastX, y: lastY}]
+  			}]
+  		},
+  		options: {
+  			scales: {
+  				xAxes: [{
+  					//type: 'time',
+  					position: 'bottom'
+  					// time: {
+  					// 	unit: 'day',
+  					// 	unitStepSize: 1
+  					// }
+  				}],
+  				yAxes: [{
+  					scaleLabel: {
+  						display: true,
+  						labelString: "Degrees Celsius"
+  					}
+  				}]
+  			}
+  		}
+  	});
 }
