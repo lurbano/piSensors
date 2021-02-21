@@ -57,6 +57,7 @@ $(document).ready(function(){
         }
         if (sData.info == 'logUpdate'){
           dataT.addRow(sData);
+          graphT.addDataPoint(sData);
         }
 
       };
@@ -204,5 +205,14 @@ class dataGraph{
        }
     );
 
+  }
+  addDataPoint( dataList ){
+    // let x = this.plot.data[0].x.push(dataList["t"]);
+    // let y = this.plot.data[0].y.push(dataList["x"]);
+    let x = dataList["t"];
+    let y = dataList["x"];
+    let update = {'x': [[x]], 'y': [[y]]};
+
+    Plotly.extendTraces(this.plot, update, {} );
   }
 }
