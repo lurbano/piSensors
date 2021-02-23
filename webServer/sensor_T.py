@@ -4,6 +4,7 @@ from subprocess import Popen
 import glob
 import pprint
 
+# TEMPERATURE SENSOR
 class sensor_T:
 
     def __init__(self):

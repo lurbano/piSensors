@@ -39,22 +39,21 @@ $(document).ready(function(){
           $("#timeLeft").html(m + ":" + s);
         }
 
+        // TEMPERATURE SENSOR (1/2)
+
+        // measure temperature once (button press)
         if (sData.info == 'T'){
           $("#T_measure").html(sData.T + " °C");
-          // if (sData.t !== 'undefined') {
-          //   $("#info").html(sData.t);
-          // }
           let now = new Date();
           $("#T_time").html(now.toString().split(" GMT")[0]);
-
         }
 
+        // write all data to log at end of sensing
         if (sData.info == 'logT'){
-          console.log(sData);
-          // dataT = new dataTable("logData", "deg C");
-          // dataT.setupTable();
           dataT.writeAllData(sData);
         }
+
+        // continuous log: Add one data point to graph and table
         if (sData.info == 'logUp'){
           dataT.addRow(sData);
           graphT.addDataPoint(sData);
@@ -62,6 +61,7 @@ $(document).ready(function(){
           $("#countdownData").html("-"+sData.timeLeft+" s");
           $("#timeLeftT").css("width", 100*sData.timeLeft/timeLog+"%");
         }
+        //TEMPERATURE SENSOR (END)
 
       };
   };
@@ -73,6 +73,8 @@ $(document).ready(function(){
   };
 
   //MESSAGES TO SEND TO THE SERVER
+
+  // TEMPERATURE SENSOR (2/2)
 
   $("#checkTemp").click(function(){
       let msg = '{"what": "checkT"}';
@@ -103,6 +105,8 @@ $(document).ready(function(){
       }
       ws.send(JSON.stringify(msg));
   });
+
+  //TEMPERATURE SENSOR (END)
 
   $("#hello").click(function(){
       let msg = '{"what": "hello"}';
