@@ -87,6 +87,7 @@ $(document).ready(function(){
       dataT.setupTable();
 
       graphT = new dataGraph("logGraph", "°C");
+      $("#logGraph").css("height", "400px");
       console.log(graphT.plot.data);
 
       let timeMin = parseInt($("#logT_timeMin").val());
