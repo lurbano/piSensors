@@ -97,7 +97,9 @@ $(document).ready(function(){
 
       let dtMin = parseInt($("#logT_dtMin").val());
       let dtSec = parseInt($("#logT_dtSec").val());
-      let dt = dtMin * 60 + dtSec;
+      let dtMil = parseInt($("#logT_dtMil").val());
+      let dt = (dtMin * 60 + dtSec) + (dtMil/1000);
+      console.log(dt);
 
       let msg = {
         "what": "logT",

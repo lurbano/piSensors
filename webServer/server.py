@@ -75,15 +75,15 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 			# TEMPERATURE SENSOR (2/2)
 
 			if msg["what"] == "checkS":
-				sensor = sensor_T()
-				task = asyncio.create_task(sensor.aRead(self))
+				sensor = sensor_T(self)
+				task = asyncio.create_task(sensor.aRead())
 
 			if msg["what"] == "logT":
 				Tsense = sensor_T()
 				t = float(msg["t"])
 				dt = float(msg["dt"])
 				update = msg["update"]
-				task = asyncio.create_task(Tsense.aLog(self, t, dt, update))
+				task = asyncio.create_task(Tsense.aLog( t, dt, update))
 
 			# TEMPERATURE SENSOR (END)
 

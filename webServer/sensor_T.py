@@ -7,7 +7,9 @@ import pprint
 # TEMPERATURE SENSOR
 class sensor_T:
 
-    def __init__(self):
+    def __init__(self, server):
+
+        self.server = server
 
         #Thermometer setup
         Popen(['modprobe', 'w1-gpio'])
@@ -35,7 +37,7 @@ class sensor_T:
             time.sleep(0.25)
         return T_C
 
-    async def aRead(self, server, getTime=False, log=False, update="live"):
+    async def aRead(self, getTime=False, log=False, update="live"):
         l_yes = False
         while (not l_yes):
             with open(self.device_file) as f:
@@ -62,12 +64,12 @@ class sensor_T:
             if update == "live":
                 m['timeLeft'] = self.timeLeft
                 m["info"] = "logUp"
-                server.write_message(m)
+                self.server.write_message(m)
         message["info"] = "S-one"
-        server.write_message(message)
+        self.server.write_message(message)
         return message
 
-    async def aLog(self, server, t, dt, update="live"):
+    async def aLog(self, t, dt, update="live"):
         # self.log = logger("logT", t, dt, self.aRead, self)
         # data = await self.log.logData()
 
@@ -83,13 +85,13 @@ class sensor_T:
         while self.timeLeft >= 0:
             await asyncio.gather(
                 asyncio.sleep(dt),
-                self.aRead(server, True, True, update)
+                self.aRead( True, True, update)
             )
             self.timeLeft -=dt
 
         message['logData'] = self.log
         if update != "live":
-            server.write_message(message)
+            self.server.write_message(message)
         #pprint.pprint(message)
 
 class logger:
