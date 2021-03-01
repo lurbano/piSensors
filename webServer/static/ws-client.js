@@ -42,10 +42,10 @@ $(document).ready(function(){
         // TEMPERATURE SENSOR (1/2)
 
         // measure temperature once (button press)
-        if (sData.info == 'T'){
-          $("#T_measure").html(sData.T + " °C");
+        if (sData.info == 'S-one'){
+          $("#sensor_measure").html(sData.S + ' ' + sData.units) //" °C");
           let now = new Date();
-          $("#T_time").html(now.toString().split(" GMT")[0]);
+          $("#sensor_time").html(now.toString().split(" GMT")[0]);
         }
 
         // write all data to log at end of sensing
@@ -76,10 +76,11 @@ $(document).ready(function(){
 
   // TEMPERATURE SENSOR (2/2)
 
-  $("#checkTemp").click(function(){
-      let msg = '{"what": "checkT"}';
+  $("#checkSensor").click(function(){
+      let msg = '{"what": "checkS"}';
       ws.send(msg);
-      $("#T_measure").html("Checking Temperature");
+      let return_signal = "Checking " + this.value.split(" ")[1];
+      $("#sensor_measure").html(return_signal);
   });
 
   $("#logT").click(function(){
