@@ -49,7 +49,11 @@ class sensor_T:
                 #print(lns[0])
                 #print(lns[1])
             time.sleep(0.25)
-        message = {"T": T_C }
+
+        message = {}
+        message["S"] = T_C
+        message["units"] = '°C'
+
         if getTime:
             message["t"] = time.ctime(time.time())
         if log:
@@ -59,7 +63,7 @@ class sensor_T:
                 m['timeLeft'] = self.timeLeft
                 m["info"] = "logUp"
                 server.write_message(m)
-        message["info"] = "T"
+        message["info"] = "S-one"
         server.write_message(message)
         return message
 
