@@ -50,7 +50,7 @@ class sensor_T:
                         T_C = float(T_str) / 1000.0
                 #print(lns[0])
                 #print(lns[1])
-            time.sleep(0.01)
+            asyncio.sleep(0.01)
 
         message = {}
         message["S"] = T_C
