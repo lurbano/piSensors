@@ -78,6 +78,11 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 				sensor = sensor_T(self)
 				task = asyncio.create_task(sensor.aRead())
 
+			if msg["what"] == 'monitor':
+				sensor = sensor_T(self)
+				dt = float(msg['dt'])
+				task = asyncio.create_task(sensor.aMonitor(dt))
+
 			if msg["what"] == "logT":
 				Tsense = sensor_T(self)
 				t = float(msg["t"])

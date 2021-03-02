@@ -83,6 +83,15 @@ $(document).ready(function(){
       $("#sensor_measure").html(return_signal);
   });
 
+  $("#monitorSensor").click(function(){
+    let dt = $("monitorSec").val();
+    let msg = {
+      "what": "monitor",
+      "dt": dt
+    };
+    ws.send(JSON.stringify(msg));
+  })
+
   $("#logT").click(function(){
       dataT = new dataTable("logData", "°C");
       dataT.setupTable();

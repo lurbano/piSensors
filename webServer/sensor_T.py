@@ -69,6 +69,14 @@ class sensor_T:
         self.server.write_message(message)
         return message
 
+    async def aMonitor(self, dt):
+        while 1:
+            self.aRead
+            await asyncio.gather(
+                asyncio.sleep(dt),
+                self.aRead( True, False, 'live')
+            )
+
     async def aLog(self, t, dt, update="live"):
         # self.log = logger("logT", t, dt, self.aRead, self)
         # data = await self.log.logData()
