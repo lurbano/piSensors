@@ -78,7 +78,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 			if msg["what"] == "checkS":
 				if not sensor:
 					sensor = sensor_T(self)
-				sensor.task = asyncio.create_task(sensor.aRead())
+				asyncio.create_task(sensor.aRead())
 
 			if msg["what"] == 'monitor':
 				if not sensor:
