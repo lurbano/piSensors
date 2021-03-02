@@ -78,6 +78,7 @@ class sensor_T:
 
     async def aMonitor(self, dt):
         self.taskType = "monitor"
+        print("monitor: dt=", dt)
         while 1:
             await asyncio.gather(
                 asyncio.sleep(dt),
