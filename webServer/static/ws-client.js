@@ -84,7 +84,7 @@ $(document).ready(function(){
   });
 
   $("#monitorSensor").click(function(){
-    let dt = $("monitorSec").val();
+    let dt = $("#monitorSec").val();
     let msg = {
       "what": "monitor",
       "dt": dt
