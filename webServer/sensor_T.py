@@ -23,6 +23,12 @@ class sensor_T:
         self.task = None
         self.taskType = None
 
+    def cancelTask(self):
+        print("Canceling last task.")
+        if self.task:
+            self.task.cancel()
+            self.taskType = None
+
     def read(self):
         l_yes = False
         while (not l_yes):
@@ -105,11 +111,7 @@ class sensor_T:
             self.server.write_message(message)
         #pprint.pprint(message)
 
-    def cancelTask(self):
-        print("Canceling last task.")
-        if self.task:
-            self.task.cancel()
-            self.taskType = None
+
 
 
 class logger:
