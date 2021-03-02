@@ -74,7 +74,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 					sys.exit("Stopping server")
 
 			# TEMPERATURE SENSOR (2/2)
-
+			global sensor
 			if msg["what"] == "checkS":
 				if not sensor:
 					sensor = sensor_T(self)
