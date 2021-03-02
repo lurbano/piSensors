@@ -9,8 +9,6 @@ class sensor_T:
 
     def __init__(self, server):
 
-        self.server = server
-
         #Thermometer setup
         Popen(['modprobe', 'w1-gpio'])
         Popen(['modprobe', 'w1-therm'])
@@ -19,6 +17,7 @@ class sensor_T:
         self.device_folder = glob.glob(self.base_dir + '28*')[0]
         self.device_file = self.device_folder + '/w1_slave'
 
+        self.server = server
         self.log = []
         self.task = None
         self.taskType = None
