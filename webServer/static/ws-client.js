@@ -89,7 +89,6 @@ $(document).ready(function(){
       "what": "monitor",
       "dt": dt
     };
-    console.log(msg);
     ws.send(JSON.stringify(msg));
   })
 

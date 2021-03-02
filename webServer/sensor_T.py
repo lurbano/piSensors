@@ -20,6 +20,8 @@ class sensor_T:
         self.device_file = self.device_folder + '/w1_slave'
 
         self.log = []
+        self.task = None
+        self.taskType = None
 
     def read(self):
         l_yes = False
@@ -70,6 +72,7 @@ class sensor_T:
         return message
 
     async def aMonitor(self, dt):
+        self.taskType = "monitor"
         while 1:
             self.aRead
             await asyncio.gather(
@@ -101,6 +104,13 @@ class sensor_T:
         if update != "live":
             self.server.write_message(message)
         #pprint.pprint(message)
+
+    def cancelTask(self):
+        print("Canceling last task.")
+        if self.task:
+            self.task.cancel()
+            self.taskType = None
+
 
 class logger:
     def __init__(self, info, t, dt, readFunc, caller):
