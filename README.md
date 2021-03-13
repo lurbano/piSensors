@@ -22,82 +22,16 @@ Pins:
 
 # Software: Set up Raspberry Pi SD Card
 
-## Install OS
-### Create image on the SD card:
- (make image using Raspberry Pi Imager: https://www.raspberrypi.org/software/)
+[Set up instructions](PI_SETUP.md)
+* Use these [instructions](PI_SETUP.md) to install the operating system on your Pi and allow it to connect to your local network.
 
-### Setup ssh, wifi, and usb connection
- Working on the boot directory of the SD Card
-
-#### 1) ssh
-[copy] or create empty file ***ssh*** on SD Card's boot directory
-* Filename: *ssh*
-
-#### 2) wpa_supplicant.conf
-[edit] or create file for wifi connection and copy to boot directory of Pi:
-* File name: *wpa_supplicant.conf*
-* Change: `networkName` and `yourPassword`
-
-The file should look like:
-
-*wpa_supplicant.conf*
-```
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-
-network={
- ssid="networkName"
- psk="yourPassword"
-}
-```
-
-#### 3) USB connection and 1-Wire Interface for temperature sensor.
-[copy] over or update files on the SD Card for usb connection (https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget)
-
-***config.txt***: Add `dtoverlay=dwc2` as the last line for USB, and add then `dtoverlay=w1-gpio` for 1-Wire.
- ```
-dtoverlay=dwc2
-dtoverlay=w1-gpio
-```
-
-NOTE: Another option for setting up 1-Wire is to do it through `raspi-config` when the pi is running (as described in the Enable Interfaces section).
-
-***cmdline.txt***: Insert:
-``` modules-load=dwc2,g_ether```
-after `rootwait` (e.g. `rootwait modules-load=dwc2,g_ether`).
+* [Optional]: You can set up the 1-Wire interface on the SD Card by adding the line `dtoverlay=w1-gpio` to the ***config.txt*** file. Or you can set it up when you connect the pi as described below:
 
 
-## Set up Pi
+# Set up Pi Interfaces
+Once logged in to the pi:
 
-### Connect to Pi
-
-Plug Pi into Laptop USB then once pi has booted up:
-
-*Option 1: Windows*: Login with (putty: https://www.putty.org/):
-* PuTTY Host/IP: raspberrypi.local
-* Port: 22
-* Username: pi
-* Password: raspberry
-
-*Option 2: Mac or Linux*: use Terminal app, which is built in, for the command line:
-```console
-ssh pi@raspberrypi.local
-```
-
-*NOTE: Troubleshooting*: you may have to remove the **~/.ssh/known_hosts** file if you find yourself logging in to the wrong pi or unable to connect.
-```console
-rm .ssh/known_hosts
-```
-
-
-### update Pi
-Once you're logged into the Pi
- ```console
-sudo apt-get update
-sudo apt-get upgrade
-```
-
-### Enable Interfaces
+## Enable Interfaces
 run `raspi-config` and enable needed interfaces (see https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/ds18b20):
 ```console
 sudo raspi-config
@@ -107,13 +41,13 @@ Enable Interfaces
 ** Temperature sensor
 
 
-### REBOOT pi
+## REBOOT pi
  ```console
 sudo reboot
 ```
 
 
-# Installing this software: r
+# Installing this software: 
 From your home directory clone the github repository.
 ```console
 git clone https://github.com/lurbano/piSensors.git
