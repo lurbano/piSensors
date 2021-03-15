@@ -126,6 +126,18 @@ $(document).ready(function(){
     let nPix = parseInt($("#nPix").val());
     console.log(this.checked, nPix);
 
+    if (this.checked){
+      let msg = {
+        "what": "LEDs",
+        "nPix": nPix,
+        "activate": true
+      }
+      ws.send(JSON.stringify(msg));
+    }
+    else {
+
+    }
+
   })
   //LEDs (END)
 

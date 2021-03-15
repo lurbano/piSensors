@@ -101,6 +101,16 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
 			# TEMPERATURE SENSOR (END)
 
+			# LEDs
+			if msg["what"] == "LEDs":
+				if msg["activate"]:
+					nPix = msg["nPix"]
+					print(f'Activating {nPix} neoPixels')
+
+			# LEDs (END)
+
+
+
 			if msg["what"] == "hello":
 				r = 'Say what?'
 				self.write_message({"info": "hello", "reply":r})
