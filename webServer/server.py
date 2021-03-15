@@ -28,18 +28,27 @@ from sensor_T import *
 sensor = None
 # TEMPERATURE SENSOR (END)
 
-nPix = 20
+# LEDs (1/2)
+try:
+	from ledPixels import *
 
-# get number of pixels from the command line
-parser = argparse.ArgumentParser()
-parser.add_argument("-n", "--nPix", help = "Number of pixels")
-args = parser.parse_args()
+	nPix = 20
+	ledPin = board.D18
 
-if args.nPix:
-	try:
-		nPix = int(args.nPix)
-	except:
-		print("using default (20) pixels: -nPix 20")
+	# get number of pixels from the command line
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-n", "--nPix", help = "Number of pixels")
+	args = parser.parse_args()
+
+	if args.nPix:
+		try:
+			nPix = int(args.nPix)
+		except:
+			print("using default (20) pixels: -nPix 20")
+	ledPix = ledPixels(nPix, ledPin)
+except:
+	ledPix = False
+# LED's (END)
 
 #Tornado Folder Paths
 settings = dict(
@@ -103,9 +112,12 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
 			# LEDs
 			if msg["what"] == "LEDs":
+
 				if msg["activate"]:
-					nPix = msg["nPix"]
-					print(f'Activating {nPix} neoPixels')
+					if ledPix:
+						nPix = msg["nPix"]
+						print(f'Activating {nPix} neoPixels')
+
 
 			# LEDs (END)
 
