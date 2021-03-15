@@ -147,11 +147,15 @@ $(document).ready(function(){
         "nPix": nPix,
         "activate": true
       }
-      ws.send(JSON.stringify(msg));
     }
     else {
-
+      let msg = {
+        "what": "LEDs",
+        "activate": false
+      }
     }
+    
+    ws.send(JSON.stringify(msg));
 
   })
   //LEDs (END)
