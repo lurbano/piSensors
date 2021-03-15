@@ -68,9 +68,12 @@ $(document).ready(function(){
         if (sData.info == 'LEDsActive'){
           if (sData.active == "show") {
             $("#ledBlock").show();
+            $("#hasLEDs").prop("checked", true);
+            $("#nPix").val(sData.nPix);
           }
           else {
             $("#ledBlock").hide();
+            console.log("LED's not activated by server. You may need to install the neoPixel library (see http://github.com/lurbano/rpi-led-strip)");
           }
         }
         //LEDs (END)

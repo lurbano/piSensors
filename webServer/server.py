@@ -72,10 +72,10 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 		print ('[WS] Connection was opened.')
 		self.write_message('{"who": "server", "info": "on"}')
 		#self.oled = oledU(128,32)
-		
+
 		# LEDs
 		if ledPix:
-			self.write_message({"info": "LEDsActive", "active": "show"})
+			self.write_message({"info": "LEDsActive", "active": "show", "nPix": nPix})
 			print("LED's Active")
 		else:
 			self.write_message({"info": "LEDsActive", "active": "hide"})
