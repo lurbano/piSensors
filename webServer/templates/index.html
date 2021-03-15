@@ -38,6 +38,11 @@
       border: 1px solid black;
       text-align: right;
     }
+    #ledBlock {
+      background-color: lavender;
+      border: 1px solid red;
+      width: 75%;
+    }
   </style>
 
 </head>
@@ -51,6 +56,12 @@ Info:<span id="info">Hi</span>
 
 <input type="button" id="hello" value="Hello World">
 <span id="HelloResponse"></span>
+
+<div id="ledBlock">
+  LED's: <input type="checkbox" id="hasLEDs" checked>
+  <br>
+  # of LEDs: <input type="number" id="nPix" value="3">
+</div>
 
 <p>
   <input type="button" id="timer" value="Start Timer">

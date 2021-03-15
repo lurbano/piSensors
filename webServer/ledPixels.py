@@ -1,3 +1,5 @@
+# LED STRIP
+
 import neopixel
 import board
 import time
@@ -23,6 +25,11 @@ class ledPixels:
         self.task = None
         for i in range(nPix):
             self.oldColors.append((0,0,0))
+
+    def initCodeColor(self):
+        self.pixels[-1] = (0, 100, 0)
+        self.pixels[-2] = (0, 0, 100)
+        self.pixels.show()
 
     def setOldColors(self, col=None):
         if col == None:
@@ -110,7 +117,7 @@ class ledPixels:
     def blue(self):
         for i in range(self.nPix):
             self.pixels[i] = (0,0,int(255*self.brightness))
-            self.pixels.show()
+        self.pixels.show()
         self.setOldColors((0,0,255))
 
     #UTILITY METHODS
@@ -132,6 +139,7 @@ class ledPixels:
 
 
     def cancelTask(self):
+        print("Canceling last task.")
         if self.task:
             self.task.cancel()
 

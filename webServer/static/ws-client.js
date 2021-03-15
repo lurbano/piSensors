@@ -121,6 +121,14 @@ $(document).ready(function(){
 
   //TEMPERATURE SENSOR (END)
 
+  //LEDs
+  $("#hasLEDs").change(function(){
+    let nPix = parseInt($("#nPix").val());
+    console.log(this.value, nPix);
+
+  })
+  //LEDs (END)
+
   $("#hello").click(function(){
       let msg = '{"what": "hello"}';
       ws.send(msg);
