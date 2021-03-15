@@ -48,6 +48,7 @@ try:
 	ledPix = ledPixels(nPix, ledPin)
 except:
 	ledPix = False
+print("ledPix:", ledPix)
 # LED's (END)
 
 #Tornado Folder Paths
