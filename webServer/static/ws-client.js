@@ -63,6 +63,18 @@ $(document).ready(function(){
         }
         //TEMPERATURE SENSOR (END)
 
+        //LEDs
+        // Activate LEDs
+        if (sData.info == 'LEDsActive'){
+          if (sData.active == "show") {
+            $("#ledBlock").show();
+          }
+          else {
+            $("#ledBlock").hide();
+          }
+        }
+        //LEDs (END)
+
       };
   };
 
