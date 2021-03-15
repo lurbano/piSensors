@@ -274,10 +274,10 @@ class dataGraph{
   addDataPoint( dataList ){
     let newx = parseFloat(dataList["t"]);
     let newy = parseFloat(dataList["x"]);
-    console.log(newx, newy);
+    //console.log(newx, newy);
 
     let update = { x: [[newx]], y: [[newy]]};
-    console.log(update);
+    //console.log(update);
 
     Plotly.extendTraces(this.plot, update, [0] );
   }
