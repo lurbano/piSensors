@@ -124,7 +124,7 @@ $(document).ready(function(){
   //LEDs
   $("#hasLEDs").change(function(){
     let nPix = parseInt($("#nPix").val());
-    console.log(this.value, nPix);
+    console.log(this.checked, nPix);
 
   })
   //LEDs (END)
