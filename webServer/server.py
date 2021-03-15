@@ -129,6 +129,16 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 				else:
 					print(f'Deactivating LEDs')
 
+			if msg["what"] == "nPixSet":
+
+				if ledPix:
+					nPix = int(msg["nPix"])
+					print(f'Activating {nPix} neoPixels')
+					ledPix.clear()
+					ledPix.nPixSet(nPix)
+					ledPix.initCodeColor()
+
+
 
 			# LEDs (END)
 

@@ -16,13 +16,19 @@ def rgb_to_hex(rgb):
 
 class ledPixels:
     def __init__(self, nPix, ledPin):
-        self.nPix = nPix
+        #self.nPix = nPix
         self.ledPin = ledPin
-        self.pixels = neopixel.NeoPixel(board.D18, nPix, auto_write=False)
+        self.nPixSet(nPix)
+        #self.pixels = neopixel.NeoPixel(board.D18, nPix, auto_write=False)
         self.interrupt = False
         self.brightness = 1.0 # from 0 to 1
         self.oldColors = []
         self.task = None
+
+
+    def nPixSet(self, nPix):
+        self.nPix = nPix
+        self.pixels = neopixel.NeoPixel(board.D18, nPix, auto_write=False)
         for i in range(nPix):
             self.oldColors.append((0,0,0))
 

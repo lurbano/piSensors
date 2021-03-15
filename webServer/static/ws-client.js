@@ -158,6 +158,15 @@ $(document).ready(function(){
     ws.send(JSON.stringify(msg));
 
   })
+
+  $("#nPixSet").click(function(){
+    let nPix = parseInt($("#nPix").val());
+    let msg = {
+      "what": "nPixSet",
+      "nPix": nPix
+    }
+    ws.send(JSON.stringify(msg));
+  })
   //LEDs (END)
 
   $("#hello").click(function(){
