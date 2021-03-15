@@ -22,7 +22,6 @@ class ledPixels:
         #self.pixels = neopixel.NeoPixel(board.D18, nPix, auto_write=False)
         self.interrupt = False
         self.brightness = 1.0 # from 0 to 1
-        self.oldColors = []
         self.task = None
 
 
@@ -30,8 +29,10 @@ class ledPixels:
         print("nPix ledPix:", nPix)
         self.nPix = nPix
         self.pixels = neopixel.NeoPixel(board.D18, nPix, auto_write=False)
+        self.oldColors = []
         for i in range(nPix):
             self.oldColors.append((0,0,0))
+        print("nPix Set")
 
     def initCodeColor(self):
         self.pixels[-1] = (0, 100, 0)
