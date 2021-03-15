@@ -27,6 +27,7 @@ class ledPixels:
 
 
     def nPixSet(self, nPix):
+        print("nPix ledPix:", nPix)
         self.nPix = nPix
         self.pixels = neopixel.NeoPixel(board.D18, nPix, auto_write=False)
         for i in range(nPix):
