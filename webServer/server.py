@@ -176,11 +176,12 @@ if __name__ == "__main__":
 		print(wifi)
 
 		# LEDs
-		print(ledPix)
 		if ledPix:
 			self.write_message({"info": "LEDsActive", "active": "show"})
+			print("LED's Active")
 		else:
 			self.write_message({"info": "LEDsActive", "active": "hide"})
+			print("LED's Inactive")
 
 		# LEDs (END)
 
