@@ -142,19 +142,19 @@ $(document).ready(function(){
     console.log(this.checked, nPix);
 
     if (this.checked){
-      let msg = {
+      var msg = {
         "what": "LEDs",
         "nPix": nPix,
         "activate": true
       }
     }
     else {
-      let msg = {
+      var msg = {
         "what": "LEDs",
         "activate": false
       }
     }
-    
+
     ws.send(JSON.stringify(msg));
 
   })
