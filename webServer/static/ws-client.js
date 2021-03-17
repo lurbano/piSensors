@@ -92,12 +92,15 @@ $(document).ready(function(){
   // TEMPERATURE SENSOR (2/2)
 
   $(".logCheck").change(function(){
+    console.log(this.checked);
     if (this.checked){
+      console.log("show");
       $(".logging").show();
     }
     else {
       $(".logging").hide();
     }
+
   })
 
   $("#checkSensor").click(function(){
