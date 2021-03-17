@@ -18,6 +18,7 @@ $(document).ready(function(){
       $("#signal").html("READY");
       $("#ws-status").html("Connected");
       $("#ws-status").css("background-color", "#afa");
+      $(".logging").hide();
   };
 
   ws.onmessage = function(evt) {
