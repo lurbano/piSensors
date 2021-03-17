@@ -91,6 +91,15 @@ $(document).ready(function(){
 
   // TEMPERATURE SENSOR (2/2)
 
+  $(".logCheck").change({
+    if (this.checked){
+      $(".logging").show();
+    }
+    else {
+      $(".logging").hide();
+    }
+  })
+
   $("#checkSensor").click(function(){
       let msg = '{"what": "checkS"}';
       ws.send(msg);
