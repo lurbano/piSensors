@@ -147,14 +147,14 @@ $(document).ready(function(){
         "nPix": nPix,
         "activate": true
       }
-      $("#ledControls").show();
+      $(".ledControls").show();
     }
     else {
       var msg = {
         "what": "LEDs",
         "activate": false
       }
-      $("#ledControls").hide();
+      $(".ledControls").hide();
     }
 
     ws.send(JSON.stringify(msg));
