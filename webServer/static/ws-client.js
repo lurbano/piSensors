@@ -18,8 +18,9 @@ $(document).ready(function(){
       $("#signal").html("READY");
       $("#ws-status").html("Connected");
       $("#ws-status").css("background-color", "#afa");
-      
+
       $("#logCheck").prop("checked", false);
+      $("#timerCheck").prop("checked", false);
   };
 
   ws.onmessage = function(evt) {
@@ -94,9 +95,7 @@ $(document).ready(function(){
   // TEMPERATURE SENSOR (2/2)
 
   $("#logCheck").change(function(){
-    console.log(this.checked);
     if (this.checked){
-      console.log("show");
       $(".logging").show();
     }
     else {
@@ -190,6 +189,9 @@ $(document).ready(function(){
       ws.send(msg);
   });
 
+  $("#timerCheck").change(function(){
+    this.checked ? $(".timer").show() : $(".timer").hide();
+  })
   $("#timer").click(function(){
       let m = $("#timerMin").val();
       let s = $("#timerSec").val();
