@@ -18,6 +18,9 @@
       background-color: khaki;
       width: 50%;
     }
+    .logging {
+      display: none;
+    }
     #logGraph {
       /* padding-top: 1em;
       padding-bottom: 1em; */
@@ -87,7 +90,7 @@ Info:<span id="info">Hi</span>
 <p>
 <div class="sensorBlock">
   Logging: <input type="checkbox" id="logCheck"><br>
-  <div class="logging" hidden>
+  <div class="logging">
     <input type="button" id="logT" value="Start Logging">
     <div> Log Time:
       <input type="number" id="logT_timeMin" min="0" value="1" title="minutes">min
