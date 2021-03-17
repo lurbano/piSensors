@@ -13,11 +13,7 @@
     input[type=number]{
       width: 5em;
     }
-    .sensorBlock {
-      border: 1px solid red;
-      background-color: khaki;
-      width: 50%;
-    }
+
     #logGraph {
       /* padding-top: 1em;
       padding-bottom: 1em; */
@@ -38,16 +34,6 @@
       border: 1px solid black;
       text-align: right;
     }
-    /* #ledBlock {
-      background-color: lavender;
-      border: 1px solid red;
-      width: 75%;
-    }
-    #timerBlock{
-      background-color: lavender;
-      border: 1px solid red;
-      width: 50%;
-    } */
     .inputBlock{
       background-color: lavender;
       border: 1px solid red;
@@ -101,7 +87,7 @@ Info:<span id="info">Hi</span>
 <input type="number" id="monitorSec" value="1" title="timestep (sec)">
 
 <p>
-<div class="sensorBlock">
+<div class="inputBlock">
   Logging: <input type="checkbox" id="logCheck"><br>
   <div class="logging" hidden>
     <input type="button" id="logT" value="Start Logging">
