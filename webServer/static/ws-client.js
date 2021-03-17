@@ -91,7 +91,7 @@ $(document).ready(function(){
 
   // TEMPERATURE SENSOR (2/2)
 
-  $(".logCheck").change({
+  $(".logCheck").change(function(){
     if (this.checked){
       $(".logging").show();
     }
