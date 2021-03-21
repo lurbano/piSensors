@@ -60,7 +60,7 @@ settings = dict(
 #pyPath = '/home/pi/rpi-led-strip/pyLED/'
 
 #Tonado server port
-PORT = 8060
+PORT = 8050
 
 class MainHandler(tornado.web.RequestHandler):
 	def get(self):
