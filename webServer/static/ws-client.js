@@ -166,11 +166,14 @@ $(document).ready(function(){
   $("#setEnd").change(function(){
     console.log("Set end time:", this.checked);
     if (this.checked){
-      $(".logEndTime").prop("disabled", true);
+      $(".logEndTime").prop("disabled", false);
+      $("#logTimeLimit").show();
     }
     else {
-      $(".logEndTime").prop("disabled", false);
+      $(".logEndTime").prop("disabled", true);
+      $("#logTimeLimit").hide();
     }
+
   })
 
   //TEMPERATURE SENSOR (END)
