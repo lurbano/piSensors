@@ -116,7 +116,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 				if msg["t"]:
 					t = float(msg["t"])
 				else:
-					t = false
+					t = False
 				dt = float(msg["dt"])
 				update = msg["update"]
 				print("msg:", msg)
