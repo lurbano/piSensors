@@ -157,11 +157,20 @@ $(document).ready(function(){
         var msg = {
           "what": "stopLog"
         }
+        this.value = "Start Logging"
       }
-
 
       ws.send(JSON.stringify(msg));
   });
+
+  $("#setEnd").click(function(){
+    if (this.checked){
+      $(".logEndTime").prop("disabled", true);
+    }
+    else {
+      $(".logEndTime").prop("disabled", false);
+    }
+  })
 
   //TEMPERATURE SENSOR (END)
 
