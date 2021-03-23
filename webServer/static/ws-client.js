@@ -120,7 +120,8 @@ $(document).ready(function(){
     ws.send(JSON.stringify(msg));
   })
 
-  $("#logT").click(function(){
+  $("#startLog").click(function(){
+      console.log(this.value);
       dataT = new dataTable("logData", "°C");
       dataT.setupTable();
 
