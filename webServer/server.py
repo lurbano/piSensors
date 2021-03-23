@@ -119,6 +119,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 					t = false
 				dt = float(msg["dt"])
 				update = msg["update"]
+				print("msg:", msg)
 				sensor.task = asyncio.create_task(sensor.aLog( t, dt, update))
 
 			if msg["what"] == "stopLog":
