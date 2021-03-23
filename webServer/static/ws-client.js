@@ -122,29 +122,44 @@ $(document).ready(function(){
 
   $("#startLog").click(function(){
       console.log(this.value);
-      dataT = new dataTable("logData", "°C");
-      dataT.setupTable();
+      if (this.value === "Start Logging"){
+        dataT = new dataTable("logData", "°C");
+        dataT.setupTable();
 
-      graphT = new dataGraph("logGraph", "°C");
-      $("#logGraph").css("height", "400px");
-      console.log(graphT.plot.data);
+        graphT = new dataGraph("logGraph", "°C");
+        $("#logGraph").css("height", "400px");
+        console.log(graphT.plot.data);
 
-      let timeMin = parseInt($("#logT_timeMin").val());
-      let timeSec = parseInt($("#logT_timeSec").val());
-      timeLog = timeMin * 60 + timeSec;
+        if (document.getElementById("setEnd").checked){
+          let timeMin = parseInt($("#logT_timeMin").val());
+          let timeSec = parseInt($("#logT_timeSec").val());
+          timeLog = timeMin * 60 + timeSec;
+        }
+        else {
+          timeLog = false;
+        }
 
-      let dtMin = parseInt($("#logT_dtMin").val());
-      let dtSec = parseInt($("#logT_dtSec").val());
-      let dtMil = parseInt($("#logT_dtMil").val());
-      let dt = (dtMin * 60 + dtSec) + (dtMil/1000);
-      console.log(dt);
+        let dtMin = parseInt($("#logT_dtMin").val());
+        let dtSec = parseInt($("#logT_dtSec").val());
+        let dtMil = parseInt($("#logT_dtMil").val());
+        let dt = (dtMin * 60 + dtSec) + (dtMil/1000);
+        console.log(dt);
 
-      let msg = {
-        "what": "logT",
-        "t": timeLog,
-        "dt": dt,
-        "update": "live"
+        let msg = {
+          "what": "startLog",
+          "t": timeLog,
+          "dt": dt,
+          "update": "live"
+        }
+        this.value = "Stop Logging"
       }
+      else {
+        let msg = {
+          "what": "stopLog"
+        }
+      }
+
+
       ws.send(JSON.stringify(msg));
   });
 

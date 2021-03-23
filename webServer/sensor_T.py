@@ -91,7 +91,10 @@ class sensor_T:
         # self.log = logger("logT", t, dt, self.aRead, self)
         # data = await self.log.logData()
 
-        self.timeLeft = t
+        if t:
+            self.timeLeft = t
+        else:
+            self.timeLeft = 1e5
         message = {}
         message["info"] = "logT"
         message['start'] = time.ctime(time.time())
