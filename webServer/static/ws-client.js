@@ -145,7 +145,7 @@ $(document).ready(function(){
         let dt = (dtMin * 60 + dtSec) + (dtMil/1000);
         console.log(dt);
 
-        let msg = {
+        var msg = {
           "what": "startLog",
           "t": timeLog,
           "dt": dt,
@@ -154,7 +154,7 @@ $(document).ready(function(){
         this.value = "Stop Logging"
       }
       else {
-        let msg = {
+        var msg = {
           "what": "stopLog"
         }
       }
