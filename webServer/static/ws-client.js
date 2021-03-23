@@ -163,7 +163,8 @@ $(document).ready(function(){
       ws.send(JSON.stringify(msg));
   });
 
-  $("#setEnd").click(function(){
+  $("#setEnd").change(function(){
+    console.log("Set end time:", this.checked);
     if (this.checked){
       $(".logEndTime").prop("disabled", true);
     }
