@@ -113,9 +113,10 @@ class sensor_T:
     async def aLog(self, t, dt, update="live"):
         # self.log = logger("logT", t, dt, self.aRead, self)
         # data = await self.log.logData()
+        print("t:", t)
         if t == 0:   #default, run for a long time
-            t = 1e10
-
+            t = 1E10
+        print("Starting Log")
         self.logFileName = "current.log"
         print(datetime.datetime.now()+'\n')
         with open(self.logFileName, "w") as f:
