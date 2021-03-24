@@ -336,7 +336,7 @@ class dataGraph{
   }
 }
 
-function getLogFileName(now = new Date){
+function getLogFileName(now = new Date()){
   //let now = new Date();
   let y = now.getFullYear();
   let m = now.getMonth();
