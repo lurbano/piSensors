@@ -112,6 +112,9 @@ class sensor_T:
     async def aLog(self, t, dt, update="live"):
         # self.log = logger("logT", t, dt, self.aRead, self)
         # data = await self.log.logData()
+        if t = 0:   #default, run for a long time
+            t = 1e10
+
         self.logFileName = "current.log"
 
         self.timeLeft = t
@@ -129,7 +132,6 @@ class sensor_T:
                 self.aRead( True, True, update)
             )
             self.timeLeft -=dt
-            print("loop:", self.timeLeft)
 
         message['logData'] = self.log
         if update != "live":
