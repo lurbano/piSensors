@@ -152,6 +152,7 @@ $(document).ready(function(){
           "update": "live"
         }
         this.value = "Stop Logging"
+        $("#saveFileName").val(getLogFileName);
       }
       else {
         var msg = {
@@ -174,6 +175,11 @@ $(document).ready(function(){
       $("#logTimeLimit").hide();
     }
 
+  })
+
+  $("#saveData").click(function(){
+    let fname = $("#saveFileName").val();
+    console.log("Save File: ", fname);
   })
 
   //TEMPERATURE SENSOR (END)
@@ -328,4 +334,15 @@ class dataGraph{
 
     Plotly.extendTraces(this.plot, update, [0] );
   }
+}
+
+function getLogFileName(now = new Date){
+  //let now = new Date();
+  let y = now.getFullYear();
+  let m = now.getMonth();
+  let d = now.getDate();
+  let h = now.getHours();
+  let m = now.getMinutes();
+  let fname = [y, m, d, h, m].join("-")+".log";
+  return fname;
 }
