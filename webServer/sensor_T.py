@@ -117,6 +117,7 @@ class sensor_T:
             t = 1e10
 
         self.logFileName = "current.log"
+        print(datetime.datetime.now()+'\n')
         with open(self.logFileName, "w") as f:
             f.write(datetime.datetime.now()+'\n')
         print("current.log initialized")
