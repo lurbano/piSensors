@@ -180,6 +180,11 @@ $(document).ready(function(){
   $("#saveData").click(function(){
     let fname = $("#saveFileName").val();
     console.log("Save File: ", fname);
+    let msg = {
+      "what": "save",
+      "filename": fname
+    }
+    ws.send(JSON.stringify(msg));
   })
 
   //TEMPERATURE SENSOR (END)

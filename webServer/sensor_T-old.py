@@ -73,29 +73,10 @@ class sensor_T:
                 m["info"] = "logUp"
                 if self.server:
                     self.server.write_message(m)
-            await self.aSaveData(m)
         message["info"] = "S-one"
         if self.server:
             self.server.write_message(message)
         return message
-
-    async def aRead_basic(self):
-        l_yes = False
-        while (not l_yes):
-            with open(self.device_file) as f:
-                lns = f.readlines()
-                if (lns[0].strip()[-3:] == 'YES'):
-                    l_yes = True
-                    equals_pos = lns[1].find('t=')
-                    if equals_pos != -1:
-                        T_str = lns[1][equals_pos+2:]
-                        T_C = float(T_str) / 1000.0
-                #print(lns[0])
-                #print(lns[1])
-            await asyncio.sleep(0.01)
-
-        return T_C
-
 
     async def aMonitor(self, dt):
         self.taskType = "monitor"
@@ -109,9 +90,11 @@ class sensor_T:
     async def aLog(self, t, dt, update="live"):
         # self.log = logger("logT", t, dt, self.aRead, self)
         # data = await self.log.logData()
-        self.logFileName = "current.log"
 
-        self.timeLeft = t
+        if t:
+            self.timeLeft = t
+        else:
+            self.timeLeft = 1e5
         message = {}
         message["info"] = "logT"
         message['start'] = time.ctime(time.time())
@@ -131,15 +114,6 @@ class sensor_T:
         if update != "live":
             self.server.write_message(message)
         #pprint.pprint(message)
-
-    async def aSaveLog(fname):
-        pass
-
-    async def aSaveData(data, fname="current.log"):
-        with open(fname, "a") as f:
-            f.write(f'{data["t"]},{data["x"]})
-
-
 
 
 

@@ -62,6 +62,9 @@ settings = dict(
 #Tonado server port
 PORT = 8050
 
+# Log file folder
+logDir = "./logs/"
+
 class MainHandler(tornado.web.RequestHandler):
 	def get(self):
 		print ("[HTTP](MainHandler) User Connected.")
@@ -124,6 +127,12 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
 			if msg["what"] == "stopLog":
 				sensor.cancelTask()
+
+			if msg["what"] == "save":
+				fname = logDir + msg["filename"]
+				if sensor:
+					await sensor.aSaveLog(fname)
+
 
 			# TEMPERATURE SENSOR (END)
 
