@@ -127,9 +127,11 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
 			if msg["what"] == "stopLog":
 				sensor.cancelTask()
+				fname = logDir + msg["fname"]
+				await sensor.aSaveLog(msg["fname"])
 
 			if msg["what"] == "save":
-				fname = logDir + msg["filename"]
+				fname = logDir + msg["fname"]
 				if sensor:
 					await sensor.aSaveLog(fname)
 

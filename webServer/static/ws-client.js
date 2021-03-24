@@ -152,11 +152,13 @@ $(document).ready(function(){
           "update": "live"
         }
         this.value = "Stop Logging"
-        $("#saveFileName").val(getLogFileName);
+        $("#saveFileName").val(getLogFileName());
       }
       else {
+        let fname = $("#saveFileName").val();
         var msg = {
-          "what": "stopLog"
+          "what": "stopLog",
+          "fname": fname
         }
         this.value = "Start Logging"
       }
@@ -182,7 +184,7 @@ $(document).ready(function(){
     console.log("Save File: ", fname);
     let msg = {
       "what": "save",
-      "filename": fname
+      "fname": fname
     }
     ws.send(JSON.stringify(msg));
   })

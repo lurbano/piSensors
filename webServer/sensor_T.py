@@ -116,6 +116,7 @@ class sensor_T:
 
         if t == 0:   #default, run for a long time
             t = 1E10
+
         self.logFileName = "current.log"
         self.logStart = datetime.datetime.now()
         with open(self.logFileName, "w") as f:
@@ -143,7 +144,10 @@ class sensor_T:
         #pprint.pprint(message)
 
     async def aSaveLog(fname):
-        pass
+        with open("current.log", "r") as infile:
+            with open(fname, "w") as outfile:
+                for i in infile:
+                    outfile.write(i)
 
     async def aSaveData(self, m, fname="current.log"):
         lout = f'{m["t"]},{m["x"]}\n'
