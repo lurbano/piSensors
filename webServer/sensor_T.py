@@ -112,7 +112,7 @@ class sensor_T:
     async def aLog(self, t, dt, update="live"):
         # self.log = logger("logT", t, dt, self.aRead, self)
         # data = await self.log.logData()
-        if t = 0:   #default, run for a long time
+        if t == 0:   #default, run for a long time
             t = 1e10
 
         self.logFileName = "current.log"
