@@ -116,11 +116,10 @@ class sensor_T:
         print("t:", t)
         if t == 0:   #default, run for a long time
             t = 1E10
-        print("Starting Log")
         self.logFileName = "current.log"
-        print(datetime.datetime.now()+'\n')
+        self.logStart = datetime.datetime.now()
         with open(self.logFileName, "w") as f:
-            f.write(datetime.datetime.now()+'\n')
+            f.write(self.logStart.strftime("%c")+'\n')
         print("current.log initialized")
 
         self.timeLeft = t
