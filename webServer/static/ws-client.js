@@ -342,7 +342,7 @@ function getLogFileName(now = new Date){
   let m = now.getMonth();
   let d = now.getDate();
   let h = now.getHours();
-  let m = now.getMinutes();
-  let fname = [y, m, d, h, m].join("-")+".log";
+  let mn = now.getMinutes();
+  let fname = [y, m, d, h, mn].join("-")+".log";
   return fname;
 }
