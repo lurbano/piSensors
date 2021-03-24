@@ -73,12 +73,13 @@ class sensor_T:
                 m["info"] = "logUp"
                 if self.server:
                     self.server.write_message(m)
-            print("saving", m)
+
             await self.aSaveData(m)
-            print("saved")
+
         message["info"] = "S-one"
         if self.server:
             self.server.write_message(message)
+        print("done aRead")
         return message
 
     async def aRead_basic(self):
@@ -138,9 +139,7 @@ class sensor_T:
         pass
 
     async def aSaveData(self, m, fname="current.log"):
-        print("inData:", m)
         lout = f'{m["t"]},{m["x"]}'
-        print(lout)
         with open(fname, "a") as f:
             f.write(lout)
 
