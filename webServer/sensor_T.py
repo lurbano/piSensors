@@ -3,6 +3,7 @@ import asyncio
 from subprocess import Popen
 import glob
 import pprint
+import datetime
 
 # TEMPERATURE SENSOR
 class sensor_T:
@@ -116,6 +117,8 @@ class sensor_T:
             t = 1e10
 
         self.logFileName = "current.log"
+        with open(self.logFileName) as f:
+            f.write(datetime.datetime.now()+'\n')
 
         self.timeLeft = t
         message = {}
@@ -142,7 +145,7 @@ class sensor_T:
         pass
 
     async def aSaveData(self, m, fname="current.log"):
-        lout = f'{m["t"]},{m["x"]}'
+        lout = f'{m["t"]},{m["x"]\n}'
         with open(fname, "a") as f:
             f.write(lout)
 
