@@ -117,7 +117,7 @@ class sensor_T:
             t = 1e10
 
         self.logFileName = "current.log"
-        with open(self.logFileName) as f:
+        with open(self.logFileName, "w") as f:
             f.write(datetime.datetime.now()+'\n')
 
         self.timeLeft = t
