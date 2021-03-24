@@ -138,8 +138,11 @@ class sensor_T:
         pass
 
     async def aSaveData(data, fname="current.log"):
+        print(data)
+        lout = f'{data["t"]},{data["x"]}'
+        print(lout)
         with open(fname, "a") as f:
-            f.write(f'{data["t"]},{data["x"]}')
+            f.write(lout)
 
 
 
