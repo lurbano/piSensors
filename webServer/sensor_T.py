@@ -143,7 +143,7 @@ class sensor_T:
             self.server.write_message(message)
         #pprint.pprint(message)
 
-    async def aSaveLog(fname):
+    async def aSaveLog(self, fname):
         with open("current.log", "r") as infile:
             with open(fname, "w") as outfile:
                 for i in infile:
