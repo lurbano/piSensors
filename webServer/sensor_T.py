@@ -137,9 +137,9 @@ class sensor_T:
     async def aSaveLog(fname):
         pass
 
-    async def aSaveData(data, fname="current.log"):
-        print(data)
-        lout = f'{data["t"]},{data["x"]}'
+    async def aSaveData(m, fname="current.log"):
+        print("inData:", m)
+        lout = f'{m["t"]},{m["x"]}'
         print(lout)
         with open(fname, "a") as f:
             f.write(lout)
