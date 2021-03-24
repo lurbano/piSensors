@@ -73,7 +73,7 @@ class sensor_T:
                 m["info"] = "logUp"
                 if self.server:
                     self.server.write_message(m)
-            print("saving")
+            print("saving", m)
             await self.aSaveData(m)
             print("saved")
         message["info"] = "S-one"
