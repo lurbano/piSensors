@@ -79,7 +79,7 @@ class sensor_T:
         message["info"] = "S-one"
         if self.server:
             self.server.write_message(message)
-        print("done aRead")
+
         return message
 
     async def aRead_basic(self):
@@ -129,6 +129,7 @@ class sensor_T:
                 self.aRead( True, True, update)
             )
             self.timeLeft -=dt
+            print("loop:", self.timeLeft)
 
         message['logData'] = self.log
         if update != "live":
