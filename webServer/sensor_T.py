@@ -76,6 +76,7 @@ class sensor_T:
                 m["info"] = "logUp"
                 # if self.server:
                 #     self.server.write_message(m)
+                print(m)
                 self.wsCast.write(m)
                 print("casted aLogging")
 
