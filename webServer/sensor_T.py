@@ -77,6 +77,7 @@ class sensor_T:
                 # if self.server:
                 #     self.server.write_message(m)
                 print(m)
+                print(self.wsCast)
                 self.wsCast.write(m)
                 print("casted aLogging")
 
