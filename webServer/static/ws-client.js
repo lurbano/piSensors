@@ -21,6 +21,11 @@ $(document).ready(function(){
 
       $("#logCheck").prop("checked", false);
       $("#timerCheck").prop("checked", false);
+
+      dataT = new dataTable("logData", "°C");
+      dataT.setupTable();
+
+      graphT = new dataGraph("logGraph", "°C");
   };
 
   ws.onmessage = function(evt) {
@@ -133,10 +138,7 @@ $(document).ready(function(){
   $("#startLog").click(function(){
       console.log(this.value);
       if (this.value === "Start Logging"){
-        dataT = new dataTable("logData", "°C");
-        dataT.setupTable();
 
-        graphT = new dataGraph("logGraph", "°C");
         $("#logGraph").css("height", "400px");
         console.log(graphT.plot.data);
 
