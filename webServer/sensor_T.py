@@ -68,18 +68,13 @@ class sensor_T:
         if getTime:
             message["t"] = time.ctime(time.time())
         if log:
-            print("updating aLogging")
             m = {"x": T_C, "t":round(time.time()-self.startTime, 4)}
             self.log.append(m)
             if update == "live":
                 m['timeLeft'] = self.timeLeft
                 m["info"] = "logUp"
-                # if self.server:
-                #     self.server.write_message(m)
-                print(m)
-                print(self.wsCast)
+
                 self.wsCast.write(m)
-                print("casted aLogging")
 
             await self.aSaveData(m)
 
@@ -118,9 +113,6 @@ class sensor_T:
             )
 
     async def aLog(self, t, dt, update="live"):
-        # self.log = logger("logT", t, dt, self.aRead, self)
-        # data = await self.log.logData()
-        print("aLogging")
 
         if t == 0:   #default, run for a long time
             t = 1E10
@@ -149,7 +141,7 @@ class sensor_T:
         # message['logData'] = self.log
         # if update != "live":
         #     self.server.write_message(message)
-        #pprint.pprint(message)
+
 
     async def aSaveLog(self, fname):
         with open("current.log", "r") as infile:

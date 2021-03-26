@@ -104,25 +104,15 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 			# TEMPERATURE SENSOR (2/2)
 			global sensor
 			if msg["what"] == "checkS":
-				# if not sensor:
-				# 	sensor = sensor_T(self)
-
 				asyncio.create_task(sensor.aRead())
 
 			if msg["what"] == 'monitor':
-				# if not sensor:
-				# 	sensor = sensor_T(self)
-				# else:
 				sensor.cancelTask()
 				dt = float(msg['dt'])
 				sensor.task = asyncio.create_task(sensor.aMonitor(dt))
 
 			if msg["what"] == "startLog":
-				# if not sensor:
-				# 	sensor = sensor_T(self)
-				# else:
 				sensor.cancelTask()
-				#sensor = sensor_T(self)
 				if msg["t"]:
 					t = float(msg["t"])
 				else:
