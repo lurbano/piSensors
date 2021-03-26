@@ -66,7 +66,7 @@ $(document).ready(function(){
         }
         if (sData.info == 'logFile'){
           const a = document.createElement("a");
-          a.href = URL.createObjectURL(new Blob([JSON.stringify(sData.data, null, 2)], {
+          a.href = URL.createObjectURL(new Blob([sData.data], {
             type: "text/plain"
           }));
           a.setAttribute("download", "data.txt");
