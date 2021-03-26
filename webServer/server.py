@@ -78,6 +78,7 @@ class MainHandler(tornado.web.RequestHandler):
 class WSHandler(tornado.websocket.WebSocketHandler):
 	def open(self):
 		wsCast.append(self)
+		sensor.server = self
 		print("open wsCast:", wsCast)
 		print ('[WS] Connection was opened.')
 		self.write_message('{"who": "server", "info": "on"}')
