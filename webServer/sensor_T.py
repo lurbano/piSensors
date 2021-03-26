@@ -15,7 +15,7 @@ class sensor_T:
         Popen(['modprobe', 'w1-therm'])
 
         self.base_dir = '/sys/bus/w1/devices/'
-        self.device_folder = glob.glob(self.base_dir + '28*')[0]self.wsCast.write(msg)
+        self.device_folder = glob.glob(self.base_dir + '28*')[0]
         self.device_file = self.device_folder + '/w1_slave'
 
         self.server = server
