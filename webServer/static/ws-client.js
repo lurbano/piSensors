@@ -67,7 +67,7 @@ $(document).ready(function(){
           graphT.addDataPoint(sData);
 
           $("#countdownData").html("-"+sData.timeLeft+" s");
-          $("#timeLeftT").css("width", 100*sData.timeLeft/timeLog+"%");
+          $("#timeLeftT").css("width", 100*sData.timeLeft/sData.timeLog+"%");
         }
         if (sData.info == 'logFile'){
           const a = document.createElement("a");

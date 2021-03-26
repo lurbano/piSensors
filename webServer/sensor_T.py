@@ -73,6 +73,7 @@ class sensor_T:
             if update == "live":
                 m['timeLeft'] = self.timeLeft
                 m["info"] = "logUp"
+                m["timeLog"] = self.timeLog
 
                 self.wsCast.write(m)
 
@@ -116,6 +117,7 @@ class sensor_T:
 
         if t == 0:   #default, run for a long time
             t = 1E10
+        self.timeLog = t
 
         self.logFileName = "current.log"
         self.logStart = datetime.datetime.now()
