@@ -135,6 +135,10 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 				if sensor:
 					await sensor.aSaveLog(fname)
 
+			if msg["what"] == "getData":
+				if sensor:
+					await sensor.aGetData()
+
 
 			# TEMPERATURE SENSOR (END)
 

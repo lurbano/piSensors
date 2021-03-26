@@ -154,6 +154,12 @@ class sensor_T:
         with open(fname, "a") as f:
             f.write(lout)
 
+    async def aGetData(self):
+        msg = {}
+        msg["info"] = "logFile"
+        with open("current.log","r") as infile:
+            msg["data"] = infile.readlines()
+            self.server.write_message(msg)
 
 
 

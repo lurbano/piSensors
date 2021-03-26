@@ -64,6 +64,16 @@ $(document).ready(function(){
           $("#countdownData").html("-"+sData.timeLeft+" s");
           $("#timeLeftT").css("width", 100*sData.timeLeft/timeLog+"%");
         }
+        if (sData.info == 'logFile'){
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(new Blob([JSON.stringify(sData.data, null, 2)], {
+            type: "text/plain"
+          }));
+          a.setAttribute("download", "data.txt");
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
         //TEMPERATURE SENSOR (END)
 
         //LEDs
@@ -187,6 +197,10 @@ $(document).ready(function(){
       "fname": fname
     }
     ws.send(JSON.stringify(msg));
+  })
+
+  $("#getData").click(function(){
+    ws.send('{"what": "getData"}');
   })
 
   //TEMPERATURE SENSOR (END)
