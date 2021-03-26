@@ -78,8 +78,10 @@ class sensor_T:
             await self.aSaveData(m)
 
         message["info"] = "S-one"
+        print(message)
         if self.server:
             self.server.write_message(message)
+            print("writing")
 
         return message
 
