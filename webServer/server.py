@@ -23,9 +23,12 @@ import numpy as np
 #from oledU import *
 from basic import *
 
+from wsBroadcasterU import *
+wsCast = wsBroadcasterU()
+
 # TEMPERATURE SENSOR (1/2)
 from sensor_T import *
-sensor = None
+sensor = sensor_T(wsCast=wsCast)
 # TEMPERATURE SENSOR (END)
 
 # LEDs (1/2)
@@ -51,6 +54,7 @@ except:
 print("ledPix:", ledPix)
 # LED's (END)
 
+
 #Tornado Folder Paths
 settings = dict(
 	template_path = os.path.join(os.path.dirname(__file__), "templates"),
@@ -73,6 +77,7 @@ class MainHandler(tornado.web.RequestHandler):
 
 class WSHandler(tornado.websocket.WebSocketHandler):
 	def open(self):
+		wsCast.append(self)
 		print ('[WS] Connection was opened.')
 		self.write_message('{"who": "server", "info": "on"}')
 		#self.oled = oledU(128,32)
@@ -98,8 +103,9 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 			# TEMPERATURE SENSOR (2/2)
 			global sensor
 			if msg["what"] == "checkS":
-				if not sensor:
-					sensor = sensor_T(self)
+				# if not sensor:
+				# 	sensor = sensor_T(self)
+
 				asyncio.create_task(sensor.aRead())
 
 			if msg["what"] == 'monitor':
@@ -189,6 +195,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
 
 	def on_close(self):
+		wsCast.remove(self)
 		print ('[WS] Connection was closed.')
 
 

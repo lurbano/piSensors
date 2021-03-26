@@ -8,17 +8,18 @@ import datetime
 # TEMPERATURE SENSOR
 class sensor_T:
 
-    def __init__(self, server=None):
+    def __init__(self, server=None, wsCast=None):
 
         #Thermometer setup
         Popen(['modprobe', 'w1-gpio'])
         Popen(['modprobe', 'w1-therm'])
 
         self.base_dir = '/sys/bus/w1/devices/'
-        self.device_folder = glob.glob(self.base_dir + '28*')[0]
+        self.device_folder = glob.glob(self.base_dir + '28*')[0]self.wsCast.write(msg)
         self.device_file = self.device_folder + '/w1_slave'
 
         self.server = server
+        self.wsCast = wsCast
         self.log = []
         self.task = None
         self.taskType = None
@@ -72,14 +73,16 @@ class sensor_T:
             if update == "live":
                 m['timeLeft'] = self.timeLeft
                 m["info"] = "logUp"
-                if self.server:
-                    self.server.write_message(m)
+                # if self.server:
+                #     self.server.write_message(m)
+                self.wsCast.write(m)
 
             await self.aSaveData(m)
 
         message["info"] = "S-one"
-        if self.server:
-            self.server.write_message(message)
+        # if self.server:
+        #     self.server.write_message(message)
+        self.wsCast.write(message)
 
         return message
 
@@ -138,9 +141,9 @@ class sensor_T:
             )
             self.timeLeft -=dt
 
-        message['logData'] = self.log
-        if update != "live":
-            self.server.write_message(message)
+        # message['logData'] = self.log
+        # if update != "live":
+        #     self.server.write_message(message)
         #pprint.pprint(message)
 
     async def aSaveLog(self, fname):
