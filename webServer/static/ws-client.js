@@ -28,7 +28,7 @@ $(document).ready(function(){
       graphT = new dataGraph("logGraph", "°C");
 
       //LED
-      if ($("#hasLEDs").prop("checked");){
+      if ($("#hasLEDs").prop("checked")){
         ledSetScale();
       }
       //LED END
