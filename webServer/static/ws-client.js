@@ -191,6 +191,10 @@ $(document).ready(function(){
 
   })
 
+  $("#getDataMenu").click(function(){
+    let oc = getMenuOption(this.innerHTML);
+  })
+
   $("#saveData").click(function(){
     let fname = $("#saveFileName").val();
     console.log("Save File: ", fname);
@@ -368,4 +372,11 @@ function getLogFileName(){
   let mn = now.getMinutes();
   let fname = [y, m, d, h, mn].join("-")+".log";
   return fname;
+}
+
+function getMenuOption(str){
+  //get the last character in the string and see if it points up or down.
+  let chrs = str.trim().split();
+  let lastChr = chrs[chars.length-1];
+  console.log("last Character": lastChar);
 }
