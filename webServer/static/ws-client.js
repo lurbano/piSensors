@@ -376,7 +376,7 @@ function getLogFileName(){
 
 function getMenuOption(str){
   //get the last character in the string and see if it points up or down.
-  let chrs = str.trim().split();
-  let lastChr = chrs[chars.length-1];
+  let chars = str.trim().split();
+  let lastChar = chrs[chars.length-1];
   console.log("last Character", lastChar);
 }
