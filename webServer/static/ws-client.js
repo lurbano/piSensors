@@ -196,9 +196,11 @@ $(document).ready(function(){
     console.log("Open menu?", oc);
     if (openMenuQ(this.innerHTML)){
       $("#getDataCtrls").show();
+      this.innerHTML = "Get Data ^";
     }
     else {
       $("#getDataCtrls").hide();
+      this.innerHTML = "Get Data ▼";
     }
 
   })
