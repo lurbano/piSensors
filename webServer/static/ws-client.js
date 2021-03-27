@@ -119,6 +119,21 @@ $(document).ready(function(){
 
   })
 
+  $("#loggingMenu").click(function(){
+    let title = "Logging"
+    if (openMenuQ(this.innerHTML)){
+      $(".logging").show();
+      this.innerHTML = title + " ^";
+    }
+    else {
+      $(".logging").hide();
+      this.innerHTML = title + " ▼";
+    }
+
+  })
+
+
+
   $("#checkSensor").click(function(){
       let msg = '{"what": "checkS"}';
       ws.send(msg);
@@ -192,15 +207,14 @@ $(document).ready(function(){
   })
 
   $("#getDataMenu").click(function(){
-    let oc = openMenuQ(this.innerHTML);
-    console.log("Open menu?", oc);
+    let title = "Get Data"
     if (openMenuQ(this.innerHTML)){
       $("#getDataCtrls").show();
-      this.innerHTML = "Get Data ^";
+      this.innerHTML = title + " ^";
     }
     else {
       $("#getDataCtrls").hide();
-      this.innerHTML = "Get Data ▼";
+      this.innerHTML = title + " ▼";
     }
 
   })

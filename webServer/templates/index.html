@@ -47,6 +47,7 @@
     .item{
       border: 1px solid black;
       border-radius: 3px;
+      padding-left: 5px;
     }
     .myButton{
       border: 3px inset chocolate;
@@ -108,7 +109,8 @@ Info:<span id="info">Hi</span>
 
 <p>
 <div class="sensorBlock">
-  Logging: <input type="checkbox" id="logCheck"><br>
+  <span id="loggingMenu" class="myButton">Logging ^</span> 
+  <input type="checkbox" id="logCheck"><br>
   <div class="logging">
     <input type="button" id="startLog" value="Start Logging">
 
