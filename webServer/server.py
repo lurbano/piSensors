@@ -225,6 +225,8 @@ if __name__ == "__main__":
 
 
 	except:
+		if ledPix:
+			ledPix.clear()
 		print ("Exception triggered - Tornado Server stopped.")
 
 #End of Program
