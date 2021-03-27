@@ -132,6 +132,13 @@ class ledPixels:
         self.pixels.show()
         self.setOldColors((0,0,255))
 
+    def scale(self, val, minVal=0., maxVal=100., col=(0,100,0)):
+        n = round(self.nPix * (val-minVal)/(maxVal-minVal))
+        for i in range(n):
+            self.pixels[i] = col
+        self.pixels.show()
+        self.setOldColors()
+
     #UTILITY METHODS
     def rainbow_cycle(self, wait):
         for j in range(255):

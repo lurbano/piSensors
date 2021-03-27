@@ -8,7 +8,7 @@ import datetime
 # TEMPERATURE SENSOR
 class sensor_T:
 
-    def __init__(self, server=None, wsCast=None):
+    def __init__(self, server=None, wsCast=None, ledPix=None):
 
         #Thermometer setup
         Popen(['modprobe', 'w1-gpio'])
@@ -20,6 +20,7 @@ class sensor_T:
 
         self.server = server
         self.wsCast = wsCast
+        self.ledPix = ledPix
         self.log = []
         self.task = None
         self.taskType = None
@@ -61,6 +62,9 @@ class sensor_T:
                 #print(lns[1])
             await asyncio.sleep(0.01)
 
+        if self.ledPix:
+            self.ledPix.scale(T_C)
+            
         message = {}
         message["S"] = T_C
         message["units"] = '°C'

@@ -26,11 +26,6 @@ from basic import *
 from wsBroadcasterU import *
 wsCast = wsBroadcasterU()
 
-# TEMPERATURE SENSOR (1/2)
-from sensor_T import *
-sensor = sensor_T(wsCast=wsCast)
-# TEMPERATURE SENSOR (END)
-
 # LEDs (1/2)
 try:
 	from ledPixels import *
@@ -53,6 +48,11 @@ except:
 	ledPix = False
 print("ledPix:", ledPix)
 # LED's (END)
+
+# TEMPERATURE SENSOR (1/2)
+from sensor_T import *
+sensor = sensor_T(wsCast=wsCast, ledPix=ledPix)
+# TEMPERATURE SENSOR (END)
 
 
 #Tornado Folder Paths
@@ -158,6 +158,11 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 					ledPix.clear()
 					ledPix.nPixSet(nPix)
 					ledPix.initCodeColor()
+
+			if msg["what"] == "ledMinMax":
+				if ledPix:
+					minVal = float(msg["min"])
+					maxVal = float(msg["max"])
 
 
 

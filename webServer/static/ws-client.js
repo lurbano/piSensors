@@ -258,6 +258,17 @@ $(document).ready(function(){
     }
     ws.send(JSON.stringify(msg));
   })
+
+  $(".ledMinMax").change(function(){
+    let ledMin = parseFloat($("#ledMin").val());
+    let ledMax = parseFloat($("#ledMax").val());
+    let msg = {
+      "what": "ledMinMax",
+      "min": ledMin,
+      "max": ledMax
+    }
+    ws.send(JSON.stringify(msg));
+  })
   //LEDs (END)
 
   $("#hello").click(function(){
