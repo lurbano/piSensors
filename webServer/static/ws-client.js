@@ -29,7 +29,15 @@ $(document).ready(function(){
 
       //LED
       if ($("#hasLEDs").prop("checked")){
-        ledSetScale();
+        //ledSetScale();
+        let ledMin = parseFloat($("#ledMin").val());
+        let ledMax = parseFloat($("#ledMax").val());
+        let msg = {
+          "what": "ledMinMax",
+          "min": ledMin,
+          "max": ledMax
+        }
+        ws.send(JSON.stringify(msg));
       }
       //LED END
 
