@@ -192,7 +192,13 @@ $(document).ready(function(){
   })
 
   $("#getDataMenu").click(function(){
-    let oc = getMenuOption(this.innerHTML);
+    if (openMenuQ(this.innerHTML)){
+      $("#getDataCtrls").show();
+    }
+    else {
+      $("#getDataCtrls").hide();
+    }
+
   })
 
   $("#saveData").click(function(){
@@ -374,12 +380,13 @@ function getLogFileName(){
   return fname;
 }
 
-function getMenuOption(str){
+function openMenuQ(str){
   //get the last character in the string and see if it points up or down.
   let chars = str.trim();
   let lastChar = chars[chars.length-1];
-  console.log("last Character", lastChar);
   if (lastChar == "▼"){
-    console.log("Open Menu");
+    return true;
+  } else {
+    return false;
   }
 }
