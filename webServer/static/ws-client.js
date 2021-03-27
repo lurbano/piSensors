@@ -19,7 +19,7 @@ $(document).ready(function(){
       $("#ws-status").html("Connected");
       $("#ws-status").css("background-color", "#afa");
 
-      $("#logCheck").prop("checked", false);
+      //$("#logCheck").prop("checked", false);
       $("#timerCheck").prop("checked", false);
 
       dataT = new dataTable("logData", "°C");
