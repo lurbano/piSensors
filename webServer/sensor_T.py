@@ -152,6 +152,8 @@ class sensor_T:
                     outfile.write(i)
 
     async def aSaveData(self, m, fname="current.log"):
+        if fname == "":
+            fname = "tmp.log"
         lout = f'{m["t"]},{m["x"]}\n'
         with open(fname, "a") as f:
             f.write(lout)
