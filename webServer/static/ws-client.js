@@ -26,6 +26,14 @@ $(document).ready(function(){
       dataT.setupTable();
 
       graphT = new dataGraph("logGraph", "°C");
+
+      //LED
+      if ($("#hasLEDs").prop("checked");){
+        ledSetScale();
+      }
+      //LED END
+
+
   };
 
   ws.onmessage = function(evt) {
@@ -260,14 +268,16 @@ $(document).ready(function(){
   })
 
   $(".ledMinMax").change(function(){
-    let ledMin = parseFloat($("#ledMin").val());
-    let ledMax = parseFloat($("#ledMax").val());
-    let msg = {
-      "what": "ledMinMax",
-      "min": ledMin,
-      "max": ledMax
-    }
-    ws.send(JSON.stringify(msg));
+    ledSetScale();
+    // let ledMin = parseFloat($("#ledMin").val());
+    // let ledMax = parseFloat($("#ledMax").val());
+    // let msg = {
+    //   "what": "ledMinMax",
+    //   "min": ledMin,
+    //   "max": ledMax
+    // }
+    // ws.send(JSON.stringify(msg));
+
   })
   //LEDs (END)
 
@@ -408,4 +418,15 @@ function openMenuQ(str){
   } else {
     return false;
   }
+}
+
+function ledSetScale(){
+  let ledMin = parseFloat($("#ledMin").val());
+  let ledMax = parseFloat($("#ledMax").val());
+  let msg = {
+    "what": "ledMinMax",
+    "min": ledMin,
+    "max": ledMax
+  }
+  ws.send(JSON.stringify(msg));
 }

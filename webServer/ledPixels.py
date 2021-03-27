@@ -19,10 +19,12 @@ class ledPixels:
         #self.nPix = nPix
         self.ledPin = ledPin
         self.nPixSet(nPix)
+        self.setupScale()
         #self.pixels = neopixel.NeoPixel(board.D18, nPix, auto_write=False)
         self.interrupt = False
         self.brightness = 1.0 # from 0 to 1
         self.task = None
+
 
 
     def nPixSet(self, nPix):
@@ -132,12 +134,17 @@ class ledPixels:
         self.pixels.show()
         self.setOldColors((0,0,255))
 
-    def scale(self, val, minVal=0., maxVal=100., col=(0,100,0)):
-        n = round(self.nPix * (val-minVal)/(maxVal-minVal))
+    def scale(self, val):
+        n = round(self.nPix * (val-self.scaleMin)/(self.scaleMax-self.scaleMin))
         for i in range(n):
             self.pixels[i] = col
         self.pixels.show()
         self.setOldColors()
+
+    def setupScale(self, minVal=0., maxVal=100., color=(0,100,0)):
+        self.scaleMin = minVal
+        self.scaleMax = maxVal
+        self.scaleCol = col
 
     #UTILITY METHODS
     def rainbow_cycle(self, wait):

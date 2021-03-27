@@ -163,6 +163,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 				if ledPix:
 					minVal = float(msg["min"])
 					maxVal = float(msg["max"])
+					ledPix.setupScale(minVal=minVal, maxVal=maxVal, color=(0,100,0))
 
 
 
