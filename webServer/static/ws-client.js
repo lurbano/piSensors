@@ -109,16 +109,6 @@ $(document).ready(function(){
 
   // TEMPERATURE SENSOR (2/2)
 
-  $("#logCheck").change(function(){
-    if (this.checked){
-      $(".logging").show();
-    }
-    else {
-      $(".logging").hide();
-    }
-
-  })
-
   $("#loggingMenu").click(function(){
     let title = "Logging"
     if (openMenuQ(this.innerHTML)){
