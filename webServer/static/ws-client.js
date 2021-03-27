@@ -192,6 +192,8 @@ $(document).ready(function(){
   })
 
   $("#getDataMenu").click(function(){
+    let oc = openMenuQ(this.innerHTML);
+    console.log("Open menu?", oc);
     if (openMenuQ(this.innerHTML)){
       $("#getDataCtrls").show();
     }
@@ -384,7 +386,7 @@ function openMenuQ(str){
   //get the last character in the string and see if it points up or down.
   let chars = str.trim();
   let lastChar = chars[chars.length-1];
-  if (lastChar == "▼"){
+  if (lastChar === "▼"){
     return true;
   } else {
     return false;
