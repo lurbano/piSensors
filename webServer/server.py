@@ -217,7 +217,7 @@ if __name__ == "__main__":
 		print(wifi)
 
 		if ledPix:
-			ledPix.initCodeColor()
+			ledPix.light(0, (0,0,100))
 
 		main_loop.start()
 
