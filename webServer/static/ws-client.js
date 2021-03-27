@@ -379,4 +379,7 @@ function getMenuOption(str){
   let chars = str.trim();
   let lastChar = chars[chars.length-1];
   console.log("last Character", lastChar);
+  if (lastChar == "▼"){
+    console.log("Open Menu");
+  }
 }
