@@ -144,7 +144,7 @@ class ledPixels:
     def setupScale(self, minVal=0., maxVal=100., color=(0,100,0)):
         self.scaleMin = minVal
         self.scaleMax = maxVal
-        self.scaleCol = col
+        self.scaleCol = color
 
     #UTILITY METHODS
     def rainbow_cycle(self, wait):
