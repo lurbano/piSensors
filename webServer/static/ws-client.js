@@ -405,7 +405,7 @@ class dataGraph{
     let newy = parseFloat(dataList["x"]);
     //console.log(newx, newy);
 
-    newy = this.T_units === "F" ? 32 + (newy*9/5) : newy;
+    newy = this.T_units === "F" ? CtoF(newy) : newy;
 
     let update = { x: [[newx]], y: [[newy]]};
     //console.log(update);
@@ -436,17 +436,30 @@ class dataGraph{
 
     // add js controls
     $("#temperatureUnitCtrl").change({graph: this},function(event){
-      var graph = event.data.graph;
-      if (this.value === "C"){
+      let graph = event.data.graph;
+      data = graph.plot.data;
+      if (this.value === "C" && graph.T_units === "F"){
         graph.T_units = "C";
-        console.log(graph.plot.data);
+        for (let i = 0; i < data.y.length; i++){
+          data.y[i] = FtoC(data.y[i])
+        }
       }
-      else if (this.value === "F"){
+      else if (this.value === "F" && graph.T_units === "C"){
         graph.T_units = "F";
+        for (let i = 0; i < data.y.length; i++){
+          data.y[i] = CtoF(data.y[i])
+        }
       }
     })
 
   }
+}
+
+function CtoF(C){
+  return 32 + (C*9/5)
+}
+function FtoC(F){
+  return (F-32) * (5/9)
 }
 
 function getLogFileName(){
