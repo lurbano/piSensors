@@ -372,6 +372,7 @@ class dataGraph{
     this.dataTitle = dataTitle;
 
     this.ctrlDiv = document.getElementById(ctrlDiv);
+    console.log("Inserting Temperature Unit Controls");
     this.insertTemperatureUnitCtrl();
 
 
@@ -409,6 +410,7 @@ class dataGraph{
     Plotly.extendTraces(this.plot, update, [0] );
   }
   insertTemperatureUnitCtrl(){
+    console.log("T units adding");
     this.unitCtrl = document.createElement("select");
     unitCtrl.id = "temperatureUnitCtrl";
 
