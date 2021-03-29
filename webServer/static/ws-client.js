@@ -437,7 +437,8 @@ class dataGraph{
     // add js controls
     $("#temperatureUnitCtrl").change({graph: this},function(event){
       var graph = event.data.graph;
-      data = graph.plot.data;
+      console.log(graph.plot.data);
+      let data = graph.plot.data;
       if (this.value === "C" && graph.T_units === "F"){
         graph.T_units = "C";
         for (let i = 0; i < data.y.length; i++){
