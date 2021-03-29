@@ -422,29 +422,32 @@ class dataGraph{
 
     Plotly.extendTraces(this.plot, update, [0] );
   }
+
   insertTemperatureUnitCtrl(){
+
+    let id = "temperatureUnitCtrl"
     this.unitCtrl = document.createElement("select");
-    this.unitCtrl.id = "temperatureUnitCtrl";
+    this.unitCtrl.id = id;
 
-    let c = document.createElement("option");
-    c.value ="C";
-    c.text = "°C";
-    c.selected = true; //default
-    this.unitCtrl.appendChild(c);
+    var f = document.createElement("option");
+    f.value ="C";
+    f.text = "°C";
+    f.selected = true; //default
+    this.unitCtrl.appendChild(f);
 
-    let f = document.createElement("option");
+    f = document.createElement("option");
     f.value = "F";
     f.text = "°F";
     this.unitCtrl.appendChild(f);
 
     let label = document.createElement("label");
     label.innerHTML = "T units: "
-    label.htmlFor = "temperatureUnitCtrl";
+    label.htmlFor = id;
 
     this.ctrlDiv.appendChild(label).appendChild(this.unitCtrl);
 
     // add js controls
-    $("#temperatureUnitCtrl").change({graph: this},function(event){
+    $(`#${id}`).change({graph: this},function(event){
       var graph = event.data.graph;
       let data = graph.plot.data[0];
       //let y = graph.plot.data[0].y;
@@ -460,13 +463,13 @@ class dataGraph{
           data.y[i] = CtoF(data.y[i])
         }
       }
-      Plotly.react(graph.plot, [data]);
+      Plotly.newPlot(graph.plot, [data]);
     })
 
   }
 
   insertTimeUnitCtrl(){
-    console.log("time units adding");
+
     let id = "timeUnitCtrl"
     this.timeUnitCtrl = document.createElement("select");
     this.timeUnitCtrl.id = id;
