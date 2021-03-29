@@ -432,12 +432,15 @@ class dataGraph{
     this.ctrlDiv.appendChild(label).appendChild(this.unitCtrl);
 
     // add js controls
-    $("#temperatureUnitCtrl").change(function(){
+    $("#temperatureUnitCtrl").change({graph: this},function(event){
+      var graph = event.data.graph;
       if (this.value === "C"){
         console.log("Converting units to °C");
+
       }
       else if (this.value === "F"){
         console.log("Converting units to °F");
+        console.log(graph.targetDiv);
       }
     })
 
