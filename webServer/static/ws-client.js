@@ -531,8 +531,10 @@ class dataGraph{
 
   }
   timeConvert(val, toUnit, fromUnit){
+    console.log("fromUnit", fromUnit)
     fromUnit = typeof fromUnit === 'undefined' ? this.timeUnits : fromUnit;
-
+    console.log("fromUnit", fromUnit)
+    
     if (toUnit === "sec"){
       val = (fromUnits === "min" ) ? val * 60
           : (fromUnits === "hrs") ? val * 60 * 60
