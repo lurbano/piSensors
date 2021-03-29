@@ -529,7 +529,7 @@ class dataGraph{
         graph.timeUnits = "day";
       }
 
-      Plotly.react(graph.plot, [data]);
+      Plotly.newPlot(graph.plot, [data]);
     })
 
   }
