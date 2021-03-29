@@ -409,7 +409,10 @@ class dataGraph{
     //console.log(newx, newy);
 
     //adjust for time units
+    console.log("before", this.timeUnits, newx);
     newx = (this.timeUnits !== "sec") ? this.timeConvert(newy, this.timeUnits, "sec"): newx;
+    console.log("after", this.timeUnits, newx);
+
 
     //adjust for temperature units
     newy = (this.T_units === "F") ? CtoF(newy) : newy;
@@ -530,11 +533,9 @@ class dataGraph{
     })
 
   }
-  timeConvert(val, toUnit, fromUnit){
-    console.log("fromUnit", fromUnit)
-    fromUnit = typeof fromUnit === 'undefined' ? this.timeUnits : fromUnit;
-    console.log("fromUnit", fromUnit)
-    
+  timeConvert(val, toUnit, fromUnits){
+    fromUnits = typeof fromUnits === 'undefined' ? this.timeUnits : fromUnits;
+
     if (toUnit === "sec"){
       val = (fromUnits === "min" ) ? val * 60
           : (fromUnits === "hrs") ? val * 60 * 60
