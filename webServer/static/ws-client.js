@@ -412,7 +412,7 @@ class dataGraph{
   insertTemperatureUnitCtrl(){
     console.log("T units adding");
     this.unitCtrl = document.createElement("select");
-    unitCtrl.id = "temperatureUnitCtrl";
+    this.unitCtrl.id = "temperatureUnitCtrl";
 
     let f = document.createElement("option");
     f.value = "F";
