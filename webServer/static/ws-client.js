@@ -367,12 +367,13 @@ class dataTable{
 }
 
 class dataGraph{
-  constructor(targetDiv, dataTitle, ctrlDiv="graphCtrls"){
+  constructor(targetDiv, dataTitle, ctrlDiv="graphCtrls", T_units="C"){
     this.targetDiv = targetDiv;
     this.dataTitle = dataTitle;
 
     this.ctrlDiv = document.getElementById(ctrlDiv);
     console.log("Inserting Temperature Unit Controls");
+    this.T_units = T_units;
     this.insertTemperatureUnitCtrl();
 
 
@@ -404,6 +405,8 @@ class dataGraph{
     let newy = parseFloat(dataList["x"]);
     //console.log(newx, newy);
 
+    newx = this.T_units === "F" ? 32 + (newx*9/5) : newx;
+
     let update = { x: [[newx]], y: [[newy]]};
     //console.log(update);
 
@@ -414,16 +417,16 @@ class dataGraph{
     this.unitCtrl = document.createElement("select");
     this.unitCtrl.id = "temperatureUnitCtrl";
 
-    let f = document.createElement("option");
-    f.value = "F";
-    f.text = "°F";
-    this.unitCtrl.appendChild(f);
-
     let c = document.createElement("option");
     c.value ="C";
     c.text = "°C";
     c.selected = true; //default
     this.unitCtrl.appendChild(c);
+
+    let f = document.createElement("option");
+    f.value = "F";
+    f.text = "°F";
+    this.unitCtrl.appendChild(f);
 
     let label = document.createElement("label");
     label.innerHTML = "T units: "
