@@ -409,9 +409,9 @@ class dataGraph{
     //console.log(newx, newy);
 
     //adjust for time units
-    console.log("before", this.timeUnits, newx); 
+    //console.log("before", this.timeUnits, newx);
     newx = (this.timeUnits !== "sec") ? this.timeConvert(newy, this.timeUnits, "sec"): newx;
-    console.log("after", this.timeUnits, newx);
+    //console.log("after", this.timeUnits, newx);
 
 
     //adjust for temperature units
@@ -508,25 +508,25 @@ class dataGraph{
         for (let i = 0; i < data.x.length; i++){
           data.x[i] = graph.timeConvert(data.x[i], "sec")
         }
-        graph.T_units = "sec";
+        graph.timeUnits = "sec";
       }
       else if (this.value === "min" && graph.T_units !== "min"){
         for (let i = 0; i < data.x.length; i++){
           data.x[i] = graph.timeConvert(data.x[i], "min")
         }
-        graph.T_units = "min";
+        graph.timeUnits = "min";
       }
       else if (this.value === "hrs" && graph.T_units !== "hrs"){
         for (let i = 0; i < data.x.length; i++){
           data.x[i] = graph.timeConvert(data.x[i], "hrs")
         }
-        graph.T_units = "hrs";
+        graph.timeUnits = "hrs";
       }
       else if (this.value === "day" && graph.T_units !== "day"){
         for (let i = 0; i < data.x.length; i++){
           data.x[i] = graph.timeConvert(data.x[i], "day")
         }
-        graph.T_units = "day";
+        graph.timeUnits = "day";
       }
 
       Plotly.react(graph.plot, [data]);
