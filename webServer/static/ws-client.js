@@ -453,7 +453,7 @@ class dataGraph{
           data.y[i] = CtoF(data.y[i])
         }
       }
-      Plotly.react([data]);
+      Plotly.react(graph.plot, [data]);
     })
 
   }
