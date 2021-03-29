@@ -492,7 +492,7 @@ class dataGraph{
     this.ctrlDiv.appendChild(label).appendChild(this.timeUnitCtrl);
 
     // add js controls
-    $("#${id}").change({graph: this},function(event){
+    $(`#${id}`).change({graph: this},function(event){
       var graph = event.data.graph;
       console.log("Data", graph.plot.data[0].x);
       let data = graph.plot.data[0];
