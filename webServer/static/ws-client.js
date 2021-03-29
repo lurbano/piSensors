@@ -464,23 +464,23 @@ class dataGraph{
     this.timeUnitCtrl = document.createElement("select");
     this.timeUnitCtrl.id = id;
 
-    let c = document.createElement("option");
-    c.value ="sec";
-    c.text = "seconds";
-    c.selected = true; //default
-    this.timeUnitCtrl.appendChild(c);
+    var f = document.createElement("option");
+    f.value ="sec";
+    f.text = "seconds";
+    f.selected = true; //default
+    this.timeUnitCtrl.appendChild(f);
 
-    let f = document.createElement("option");
+    f = document.createElement("option");
     f.value = "min";
     f.text = "minutes";
     this.timeUnitCtrl.appendChild(f);
 
-    let f = document.createElement("option");
+    f = document.createElement("option");
     f.value = "hrs";
     f.text = "hours";
     this.timeUnitCtrl.appendChild(f);
 
-    let f = document.createElement("option");
+    f = document.createElement("option");
     f.value = "day";
     f.text = "days";
     this.timeUnitCtrl.appendChild(f);
