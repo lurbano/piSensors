@@ -408,7 +408,11 @@ class dataGraph{
     let newy = parseFloat(dataList["x"]);
     //console.log(newx, newy);
 
-    newy = this.T_units === "F" ? CtoF(newy) : newy;
+    //adjust for time units
+    newx = (this.timeUnits !== "sec") ? this.timeConvert(newy, this.timeUnits, "sec"): newx;
+
+    //adjust for temperature units
+    newy = (this.T_units === "F") ? CtoF(newy) : newy;
 
     let update = { x: [[newx]], y: [[newy]]};
     //console.log(update);
@@ -526,29 +530,31 @@ class dataGraph{
     })
 
   }
-  timeConvert(val, toUnit){
+  timeConvert(val, toUnit, fromUnit){
+    fromUnit = typeof fromUnit === 'undefined' ? this.timeUnits : fromUnit;
+
     if (toUnit === "sec"){
-      val = (this.timeUnits === "min" ) ? val * 60
-          : (this.timeUnits === "hrs") ? val * 60 * 60
-          : (this.timeUnits === "day") ? val * 60 * 60 * 24
+      val = (fromUnits === "min" ) ? val * 60
+          : (fromUnits === "hrs") ? val * 60 * 60
+          : (fromUnits === "day") ? val * 60 * 60 * 24
           : val;
     }
     else if (toUnit === "min"){
-      val = (this.timeUnits === "sec" ) ? val / 60
-          : (this.timeUnits === "hrs") ? val * 60
-          : (this.timeUnits === "day") ? val * 60 * 24
+      val = (fromUnits === "sec" ) ? val / 60
+          : (fromUnits === "hrs") ? val * 60
+          : (fromUnits === "day") ? val * 60 * 24
           : val;
     }
     else if (toUnit === "hrs"){
-      val = (this.timeUnits === "sec" ) ? val / 60 / 60
-          : (this.timeUnits === "min") ? val / 60
-          : (this.timeUnits === "day") ? val * 24
+      val = (fromUnits === "sec" ) ? val / 60 / 60
+          : (fromUnits === "min") ? val / 60
+          : (fromUnits === "day") ? val * 24
           : val;
     }
     else if (toUnit === "day"){
-      val = (this.timeUnits === "sec" ) ? val / 60 / 60 / 24
-          : (this.timeUnits === "min") ? val / 60 / 24
-          : (this.timeUnits === "hrs") ? val / 24
+      val = (fromUnits === "sec" ) ? val / 60 / 60 / 24
+          : (fromUnits === "min") ? val / 60 / 24
+          : (fromUnits === "hrs") ? val / 24
           : val;
     }
     return val;
