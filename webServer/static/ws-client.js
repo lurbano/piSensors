@@ -367,7 +367,7 @@ class dataTable{
 }
 
 class dataGraph{
-  constructor(targetDiv, dataTitle, ctrlDiv="graphCtrls", T_units="C"){
+  constructor(targetDiv, dataTitle, ctrlDiv="graphCtrls", T_units="C", timeUnits="sec"){
     this.targetDiv = targetDiv;
     this.dataTitle = dataTitle;
 
@@ -375,6 +375,9 @@ class dataGraph{
     console.log("Inserting Temperature Unit Controls");
     this.T_units = T_units;
     this.insertTemperatureUnitCtrl();
+
+    this.timeUnits = timeUnits;
+    this.insertTimeUnitCtrl();
 
 
     this.plot = document.getElementById(targetDiv);
@@ -413,7 +416,6 @@ class dataGraph{
     Plotly.extendTraces(this.plot, update, [0] );
   }
   insertTemperatureUnitCtrl(){
-    console.log("T units adding");
     this.unitCtrl = document.createElement("select");
     this.unitCtrl.id = "temperatureUnitCtrl";
 
@@ -437,8 +439,6 @@ class dataGraph{
     // add js controls
     $("#temperatureUnitCtrl").change({graph: this},function(event){
       var graph = event.data.graph;
-      console.log("Data", graph.plot.data);
-      console.log("Data", graph.plot.data[0].y);
       let data = graph.plot.data[0];
       //let y = graph.plot.data[0].y;
       if (this.value === "C" && graph.T_units === "F"){
@@ -456,6 +456,102 @@ class dataGraph{
       Plotly.react(graph.plot, [data]);
     })
 
+  }
+
+  insertTimeUnitCtrl(){
+    console.log("time units adding");
+    let id = "timeUnitCtrl"
+    this.timeUnitCtrl = document.createElement("select");
+    this.timeUnitCtrl.id = id;
+
+    let c = document.createElement("option");
+    c.value ="sec";
+    c.text = "seconds";
+    c.selected = true; //default
+    this.timeUnitCtrl.appendChild(c);
+
+    let f = document.createElement("option");
+    f.value = "min";
+    f.text = "minutes";
+    this.timeUnitCtrl.appendChild(f);
+
+    let f = document.createElement("option");
+    f.value = "hrs";
+    f.text = "hours";
+    this.timeUnitCtrl.appendChild(f);
+
+    let f = document.createElement("option");
+    f.value = "day";
+    f.text = "days";
+    this.timeUnitCtrl.appendChild(f);
+
+    let label = document.createElement("label");
+    label.innerHTML = "time units: "
+    label.htmlFor = id;
+
+    this.ctrlDiv.appendChild(label).appendChild(this.timeUnitCtrl);
+
+    // add js controls
+    $("#${id}").change({graph: this},function(event){
+      var graph = event.data.graph;
+      console.log("Data", graph.plot.data[0].x);
+      let data = graph.plot.data[0];
+      //let y = graph.plot.data[0].y;
+      if (this.value === "sec" && graph.T_units !== "sec"){
+        for (let i = 0; i < data.x.length; i++){
+          data.x[i] = graph.timeConvert(data.x[i], "sec")
+        }
+        graph.T_units = "sec";
+      }
+      else if (this.value === "min" && graph.T_units !== "min"){
+        for (let i = 0; i < data.x.length; i++){
+          data.x[i] = graph.timeConvert(data.x[i], "min")
+        }
+        graph.T_units = "min";
+      }
+      else if (this.value === "hrs" && graph.T_units !== "hrs"){
+        for (let i = 0; i < data.x.length; i++){
+          data.x[i] = graph.timeConvert(data.x[i], "hrs")
+        }
+        graph.T_units = "hrs";
+      }
+      else if (this.value === "day" && graph.T_units !== "day"){
+        for (let i = 0; i < data.x.length; i++){
+          data.x[i] = graph.timeConvert(data.x[i], "day")
+        }
+        graph.T_units = "day";
+      }
+
+      Plotly.react(graph.plot, [data]);
+    })
+
+  }
+  timeConvert(val, toUnit){
+    if (toUnit === "sec"){
+      val = (this.timeUnits === "min" ) ? val * 60
+          : (this.timeUnits === "hrs") ? val * 60 * 60
+          : (this.timeUnits === "day") ? val * 60 * 60 * 24
+          : val;
+    }
+    else if (toUnit === "min"){
+      val = (this.timeUnits === "sec" ) ? val / 60
+          : (this.timeUnits === "hrs") ? val * 60
+          : (this.timeUnits === "day") ? val * 60 * 24
+          : val;
+    }
+    else if (toUnit === "hrs"){
+      val = (this.timeUnits === "sec" ) ? val / 60 / 60
+          : (this.timeUnits === "min") ? val / 60
+          : (this.timeUnits === "day") ? val * 24
+          : val;
+    }
+    else if (toUnit === "day"){
+      val = (this.timeUnits === "sec" ) ? val / 60 / 60 / 24
+          : (this.timeUnits === "min") ? val / 60 / 24
+          : (this.timeUnits === "hrs") ? val / 24
+          : val;
+    }
+    return val;
   }
 }
 
