@@ -367,9 +367,13 @@ class dataTable{
 }
 
 class dataGraph{
-  constructor(targetDiv, dataTitle){
+  constructor(targetDiv, dataTitle, ctrlDiv="graphCtrls"){
     this.targetDiv = targetDiv;
     this.dataTitle = dataTitle;
+
+    this.ctrlDiv = document.getElementById(ctrlDiv);
+    this.insertTemperatureUnitCtrl();
+
 
     this.plot = document.getElementById(targetDiv);
 
@@ -403,6 +407,38 @@ class dataGraph{
     //console.log(update);
 
     Plotly.extendTraces(this.plot, update, [0] );
+  }
+  insertTemperatureUnitCtrl(){
+    this.unitCtrl = document.createElement("select");
+    unitCtrl.id = "temperatureUnitCtrl";
+
+    let f = document.createElement("option");
+    f.value = "F";
+    f.text = "°F";
+    this.unitCtrl.appendChild(f);
+
+    let c = document.createElement("option");
+    c.value ="C";
+    c.text = "°C";
+    c.selected = true; //default
+    this.unitCtrl.appendChild(c);
+
+    let label = document.createElement("label");
+    label.innerHTML = "T units: "
+    label.htmlFor = "temperatureUnitCtrl";
+
+    this.ctrlDiv.appendChild(label).appendChild(this.unitCtrl);
+
+    // add js controls
+    $("#temperatureUnitCtrl").change(function(){
+      if (this.value === "C"){
+        console.log("Converting units to °C");
+      }
+      else if (this.value === "F"){
+        console.log("Converting units to °F");
+      }
+    })
+
   }
 }
 
