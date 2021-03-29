@@ -439,7 +439,7 @@ class dataGraph{
       var graph = event.data.graph;
       if (this.value === "C"){
         graph.T_units = "C";
-
+        console.log(graph.plot.data);
       }
       else if (this.value === "F"){
         graph.T_units = "F";
