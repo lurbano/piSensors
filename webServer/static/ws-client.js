@@ -405,7 +405,7 @@ class dataGraph{
     let newy = parseFloat(dataList["x"]);
     //console.log(newx, newy);
 
-    newx = this.T_units === "F" ? 32 + (newx*9/5) : newx;
+    newy = this.T_units === "F" ? 32 + (newy*9/5) : newy;
 
     let update = { x: [[newx]], y: [[newy]]};
     //console.log(update);
@@ -438,12 +438,11 @@ class dataGraph{
     $("#temperatureUnitCtrl").change({graph: this},function(event){
       var graph = event.data.graph;
       if (this.value === "C"){
-        console.log("Converting units to °C");
+        graph.T_units = "C";
 
       }
       else if (this.value === "F"){
-        console.log("Converting units to °F");
-        console.log(graph.targetDiv);
+        graph.T_units = "F";
       }
     })
 
