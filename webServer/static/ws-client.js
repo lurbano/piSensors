@@ -439,7 +439,8 @@ class dataGraph{
       var graph = event.data.graph;
       console.log("Data", graph.plot.data);
       console.log("Data", graph.plot.data[0].y);
-      let data = graph.plot.data;
+      let data = graph.plot.data[0];
+      //let y = graph.plot.data[0].y;
       if (this.value === "C" && graph.T_units === "F"){
         graph.T_units = "C";
         for (let i = 0; i < data.y.length; i++){
@@ -452,6 +453,7 @@ class dataGraph{
           data.y[i] = CtoF(data.y[i])
         }
       }
+      Plotly.react([data]);
     })
 
   }
