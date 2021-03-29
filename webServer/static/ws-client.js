@@ -409,9 +409,9 @@ class dataGraph{
     //console.log(newx, newy);
 
     //adjust for time units
-    console.log("before", this.timeUnits, newx, newy);
-    newx = (this.timeUnits !== "sec") ? this.timeConvert(newy, this.timeUnits, "sec"): newx;
-    console.log("after", this.timeUnits, newx, newy);
+    //console.log("before", this.timeUnits, newx, newy);
+    newx = (this.timeUnits !== "sec") ? this.timeConvert(newx, this.timeUnits, "sec"): newx;
+    //console.log("after", this.timeUnits, newx, newy);
 
 
     //adjust for temperature units
