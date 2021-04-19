@@ -16,6 +16,8 @@ gpio.setup(relayPin, gpio.OUT)
 gpio.output(relayPin, gpio.HIGH)
 time.sleep(2)
 
+l_on = True
+
 while True:
     T = sT.read()
     TF = (T *9/5)+32
@@ -24,7 +26,7 @@ while True:
     if (TF < 99.5):
         #print("less than 99.5")
         gpio.output(relayPin, gpio.HIGH)
-    else:
+    if (TF > 100):
         #print("more than")
         gpio.output(relayPin, gpio.LOW)
 
