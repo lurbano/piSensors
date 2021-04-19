@@ -18,7 +18,7 @@ while True:
     TF = (T *9/5)+32
     print(T, TF, TF > 99.5)
 
-    if (TF > 99.5):
+    if (TF < 99.5):
         print("less than 99.5")
         gpio.output(relayPin, gpio.HIGH)
     else:
