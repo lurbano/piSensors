@@ -22,4 +22,4 @@ while True:
         gpio.output(relayPin, gpio.LOW)
     else:
         gpio.output(relayPin, gpio.LOW)
-    time.sleep(5)
+    time.sleep(2)
