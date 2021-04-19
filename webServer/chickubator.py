@@ -18,12 +18,12 @@ while True:
     TF = (T *9/5)+32
     print(T, TF, TF > 99.5)
 
-    if (TF > 99.5):
-        gpio.output(relayPin, gpio.LOW)
-    else:
+    if (TF < 99.5):
         gpio.output(relayPin, gpio.HIGH)
+    else:
+        gpio.output(relayPin, gpio.LOW)
 
-    gpio.output(relayPin, gpio.HIGH)
-    time.sleep(2)
-    gpio.output(relayPin, gpio.LOW)
-    time.sleep(2)
+    # gpio.output(relayPin, gpio.HIGH)
+    # time.sleep(2)
+    # gpio.output(relayPin, gpio.LOW)
+    # time.sleep(2)
