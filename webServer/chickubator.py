@@ -13,4 +13,8 @@ print(T)
 
 gpio.setup(relayPin, gpio.OUT)
 
-gpio.output(relayPin, gpio.HIGH)
+for i in range(4):
+    gpio.output(relayPin, gpio.HIGH)
+    time.sleep(2)
+    gpio.output(relayPin, gpio.LOW)
+    time.sleep(2)
