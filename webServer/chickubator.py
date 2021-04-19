@@ -21,5 +21,5 @@ while True:
     if (TF > 99.5):
         gpio.output(relayPin, gpio.LOW)
     else:
-        gpio.output(relayPin, gpio.LOW)
+        gpio.output(relayPin, gpio.HIGH)
     time.sleep(2)
