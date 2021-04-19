@@ -13,7 +13,7 @@ print(T)
 
 gpio.setup(relayPin, gpio.OUT)
 
-for i in range(4):
+while True:
     T = sT.read()
     TF = (T *9/5)+32
     print(T, TF)
