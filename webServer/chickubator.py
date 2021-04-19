@@ -19,8 +19,10 @@ while True:
     print(T, TF, TF > 99.5)
 
     if (TF < 99.5):
+        print("less than 99.5")
         gpio.output(relayPin, gpio.HIGH)
     else:
+        print("more than")
         gpio.output(relayPin, gpio.LOW)
 
     # gpio.output(relayPin, gpio.HIGH)
