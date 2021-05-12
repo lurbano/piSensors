@@ -136,6 +136,12 @@ class ledPixels:
 
     def scale(self, val):
         n = round(self.nPix * (val-self.scaleMin)/(self.scaleMax-self.scaleMin))
+
+        if n < 0:
+            n = 0
+        if n > self.nPix:
+            n = self.nPix
+
         for i in range(n):
             self.pixels[i] = self.scaleCol
         for i in range(n, self.nPix):
